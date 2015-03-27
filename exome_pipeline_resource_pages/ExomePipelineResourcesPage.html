@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="en">
+    <!-- Le styles -->
+    <link href="./assets/bootstrap.css" rel="stylesheet">
+    <style type="text/css">
+      body {
+        padding-top: 40px;
+        padding-bottom: 40px;
+        padding-left: 40px;
+        padding-right: 40px;
+      }
+      .sidebar-nav {
+        padding: 9px 0;
+      }
+
+      @media (max-width: 980px) {
+        /* Enable use of floated navbar text */
+        .navbar-text.pull-right {
+          float: none;
+          padding-left: 5px;
+          padding-right: 5px;
+        }
+      }
+    </style>
+    <link href="http://getbootstrap.com/2.3.2/assets/css/bootstrap-responsive.css" rel="stylesheet">
+
+<head>
+	<meta charset="utf-8" />
+	<title>Exome Pipeline Resources</title>
+</head>
+<body>
+<h1>Exome Pipeline Resource </h1>
+
+<!-- ######################################### SECTION ######################################### -->
+<hr>
+<h3>Read Quality Control - NGS-QC Toolkit</h3>
+<p>NGS-QC Toolkit is used as a first step to determine NGS sequence Quality.</p>
+
+<blockquote cite="http://www.nipgr.res.in/ngsqctoolkit.html">
+	<p><i>NGS QC Toolkit: A toolkit for the quality control (QC) of next generation sequencing (NGS) data. The toolkit comprises of user-friendly stand alone tools for quality control of the sequence data generated using Illumina and Roche 454 platforms with detailed results in the form of tables and graphs, and filtering of high-quality sequence data. It also includes few other tools, which are helpful in NGS data quality control and analysis.</i></p>
+	<br>
+	<p>Patel RK, Jain M</p>
+	<p>National Institute of Plant Genome Research, Aruna Asaf Ali Marg, New Delhi, India</p>
+	
+</blockquote>
+<p>Citation: Patel RK, Jain M (2012). NGS QC Toolkit: A toolkit for quality control of next generation sequencing data. PLoS ONE, 7(2): e30619.
+	<a  href="http://journals.plos.org/plosone/article?id=10.1371/journal.pone.0030619" target="_blank" rel="stylesheet"> [link]</a></p>
+
+<p><a class="btn" href="http://www.nipgr.res.in/ngsqctoolkit.html" target="_blank">Visit NGS-QC Toolkit Website »</a>
+	<a class="btn" href="http://59.163.192.90:8080/ngsqctoolkit/NGSQCToolkitv2.3.3_manual.pdf" target="_blank">NGS-QC Toolkit Documentation »</a></p>
+
+<!-- ######################################### SECTION ######################################### -->
+<hr>
+<h3>Mapping of Read - NovoAlign</h3>
+<p>NovoAlign processes fastq reads - trimming low quality calls, removing adaptors and BQSR (Base Quality Score Recalibration) on the file. By combining these three steps, NovoAlign generates high-quality mappings against the reference.</p>
+
+<blockquote cite="http://www.novocraft.com/products/novoalign/">
+	<p><i>Powerful tool designed for mapping of short reads onto a reference genome from Illumina, Ion Torrent, and 454 NGS platforms.</i></p>
+	<br>
+	<p>Novocraft SDN BHD</p>
+</blockquote>
+
+<p><a class="btn" href="http://www.novocraft.com/products/novoalign/" target="_blank">Visit NovoAlign Website »</a>
+	<a class="btn" href="http://www.novocraft.com/documentation/novoalign-2/" target="_blank">NovoAlign Documentation »</a></p>
+
+<!-- ######################################### SECTION ######################################### -->
+<hr>
+<h3>Post Mapping QC</h3>
+<p>Post Mapping QC</p>
+
+<!-- ######################################### SECTION ######################################### -->
+<hr>
+<h3>Validation of Mapped Reads File</h3>
+<p>Validation of Mapped Reads File</p>
+
+<!-- ######################################### SECTION ######################################### -->
+<hr>
+<h3>Germline Variant Calling - Genome Analysis Toolkit(GATK)</h3>
+<p>Genome Analysis Toolkit(GATK)</p>
+<blockquote cite="https://www.broadinstitute.org/gatk/">
+	<p><i>The Genome Analysis Toolkit or GATK is a software package developed at the Broad Institute to analyze high-throughput sequencing data. The toolkit offers a wide variety of tools, with a primary focus on variant discovery and genotyping as well as strong emphasis on data quality assurance. Its robust architecture, powerful processing engine and high-performance computing features make it capable of taking on projects of any size.</i></p>
+	<br>
+	<p>Broad Institute</p>
+</blockquote>
+
+<p>Citation: McKenna A, Hanna M, Banks E, Sivachenko A, Cibulskis K, Kernytsky A, Garimella K, Altshuler D, Gabriel S, Daly M, DePristo MA, 2010. The Genome Analysis Toolkit: a MapReduce framework for analyzing next-generation DNA sequencing data. GENOME RESEARCH 20:1297-303
+	<a  href="http://genome.cshlp.org/content/20/9/1297" target="_blank"> [link]</a></p>
+<p>
+	<a class="btn" href="https://www.broadinstitute.org/gatk/" target="_blank">Visit GATK Website »</a>
+	<a class="btn" href="https://www.broadinstitute.org/gatk/guide/tooldocs/" target="_blank">Developer Documentation »</a>
+</p>
+
+<!-- ######################################### SECTION ######################################### -->
+<hr>
+<h3>Somatic Variant Calling - VarScan</h3>
+<p>VarScan</p>
+<blockquote cite="http://varscan.sourceforge.net">
+	<p><i>The advent of massively parallel sequencing technologies has fundamentally changed the study of genetics. New platforms like the Illumina HiSeq2000 yield unprecedented levels of sequencing throughput. The analysis and interpretation of data from next-generation sequencing (NGS) platforms presents a substantial informatics challenge. VarScan is a platform-independent software tool developed at the Genome Institute at Washington University to detect variants in NGS data.</i></p>
+	<br>
+	<p>Koboldt DC, Zhang Q, Larson DE, Shen D, McLellan MD, Lin L, Miller CA, Mardis ER, Ding L, Wilson RK.</p>
+	<p>The Genome Institute, Washington University<p>
+</blockquote>
+
+<p>Citation: Koboldt DC, Zhang Q, Larson DE, Shen D, McLellan MD, Lin L, Miller CA, Mardis ER, Ding L, Wilson RK. VarScan 2: somatic mutation and copy number alteration discovery in cancer by exome sequencing. Genome Res. 2012 Mar;22(3):568-76
+	<a  href="http://www.ncbi.nlm.nih.gov/pubmed/22300766" target="_blank"> [link]</a></p>
+	<a class="btn" href="http://varscan.sourceforge.net" target="_blank">Visit VarScan Website »</a>
+	<a class="btn" href="http://varscan.sourceforge.net/somatic-calling.html" target="_blank">VarScan Documentation »</a>
+	<a class="btn" href="http://sourceforge.net/projects/varscan/files/" target="_blank">Sourceforge »</a>
+	
+	
+	
+	
+</p>
+
+<hr>
+
+<!-- ######################################### SECTION ######################################### -->
+<hr>
+<h3>Quality Control - Bedtools</h3>
+<p>coverageBed</p>
+
+<blockquote cite="http://bedtools.readthedocs.org/en/latest/index.html">
+	<p><i>bedtools: a powerful toolset for genome arithmetic</i></p>
+	<br>
+	<p>Quinlan AR, Hall IM.</p>
+	<p>Quinlan Lab at University of Utah</p>
+</blockquote>
+
+<p>Citation: Quinlan AR, Hall IM. 2010. BEDTools: a flexible suite of utilities for comparing genomic features. Bioinformatics. 2010 Mar 15;26(6):841-2.
+	<a  href="http://www.ncbi.nlm.nih.gov/pmc/articles/PMC2832824/" target="_blank"> [link]</a></p>
+
+<p>
+	<a class="btn" href="http://bedtools.readthedocs.org/en/latest/index.html" target="_blank">Visit Bedtools Website »</a>
+	<a class="btn" href="http://quinlanlab.org/tutorials/cshl2014/bedtools.html" target="_blank">Bedtools Documentation »</a>
+	<a class="btn" href="http://bedtools.readthedocs.org/en/latest/content/tools/coverage.ht" target="_blank">coverageBed Documentation »</a>
+	<a class="btn" href="https://github.com/arq5x/bedtools2" target="_blank">GitHub »</a>
+</p>
+
+<!-- ######################################### SECTION ######################################### -->
+<hr>
+<h3>Functional Annotation - ANNOVAR</h3>
+<p>ANNOVAR</p>
+<blockquote cite="http://annovar.openbioinformatics.org/en/latest/">
+	<p><i>ANNOVAR is an efficient software tool to utilize update-to-date information to functionally annotate genetic variants detected from diverse genomes (including human genome hg18, hg19, hg38, as well as mouse, worm, fly, yeast and many others). </i></p>
+	<br>
+	<p>Wang K, Li M,</p>
+</blockquote>
+
+<p>Citation: Wang K, Li M, Hakonarson H. ANNOVAR: Functional annotation of genetic variants from next-generation sequencing data Nucleic Acids Research, 38:e164, 2010
+	<a  href="http://nar.oxfordjournals.org/content/38/16/e164" target="_blank"> [link]</a></p>
+<p>
+	<a class="btn" href="http://annovar.openbioinformatics.org/en/latest/" target="_blank">Visit Developer Website »</a>
+	<a class="btn" href="http://annovar.openbioinformatics.org/en/latest/" target="_blank">Developer Documentation »</a>
+</p>
+
+<!-- ######################################### SECTION ######################################### -->
+<hr>
+<h3>Quality Control - QualiMap</h3>
+<p>QualiMap</p>
+<blockquote cite="http://qualimap.bioinfo.cipf.es">
+	<p><i>Qualimap 2 is a platform-independent application written in Java and R that provides both a Graphical User Inteface (GUI) and a command-line interface to facilitate the quality control of alignment sequencing data and its derivatives like feature counts. </i></p>
+	<br>
+	<p>Fernando García-Alcalde</p>
+	<p>Max Planck Institute For Infection Biology and Bioinformatics Department of Centro de Investigación Príncipe Felipe (CIPF)</p>
+</blockquote>
+
+<p>Citation: Fernando García-Alcalde, Konstantin Okonechnikov, José Carbonell, Luis M. Cruz, Stefan Götz, Sonia Tarazona, Joaquín Dopazo, Thomas F. Meyer, and Ana Conesa "Qualimap: evaluating next-generation sequencing alignment data." Bioinformatics 28, no. 20 (2012): 2678-2679. 
+	<a  href="http://bioinformatics.oxfordjournals.org/content/28/20/2678" target="_blank"> [link]</a></p>
+<p>
+	<a class="btn" href="http://qualimap.bioinfo.cipf.es" target="_blank">Visit QualiMap Website »</a>
+	<a class="btn" href="http://qualimap.bioinfo.cipf.es/doc_html/index.html" target="_blank">Developer Documentation »</a>
+	<a class="btn" href="https://bitbucket.org/kokonech/qualimap/commits/all" target="_blank">Bitbucket »</a>
+</p>
+
+<!-- ######################################### SECTION ######################################### -->
+<hr>
+<h3>NGS Utility - BamTools</h3>
+<p>BamTools</p>
+
+<blockquote cite="https://github.com/pezmaster31/bamtools">
+	<p><i>BamTools is a project that provides both a C++ API and a command-line toolkit for reading, writing, and manipulating BAM (genome alignment) files.</i></p>
+	<br>
+	<p>Barnett DW, Garrison EK, Quinlan AR, Strömberg MP, Marth GT</p>
+	<p>Marth Lab - Biology Dept., Boston College
+</blockquote>
+
+<p>Citation: Barnett DW, Garrison EK, Quinlan AR, Strömberg MP, Marth GT. BamTools: a C++ API and toolkit for analyzing and managing BAM files. Bioinformatics. 2011 Jun 15;27(12):1691-2.
+	<a  href="http://www.ncbi.nlm.nih.gov/pubmed/21493652" target="_blank"> [link]</a></p>
+<p>
+	<a class="btn" href="https://github.com/pezmaster31/bamtools" target="_blank">Visit BamTools Website »</a>
+	<a class="btn" href="https://github.com/pezmaster31/bamtools/wiki/Using-the-toolkit" target="_blank">Developer Documentation »</a>
+	<a class="btn" href="https://github.com/pezmaster31/bamtools" target="_blank">GitHub »</a>
+</p>
+
+<!-- ######################################### SECTION ######################################### -->
+<hr>
+<h3>NGS Utility - Picard Tools</h3>
+<p>Picard Tools</p>
+<blockquote cite="http://broadinstitute.github.io/picard/index.html">
+	<p><i>A set of tools (in Java) for working with next generation sequencing data in the BAM (http://samtools.sourceforge.net) format.</i></p>
+	<br>
+	<p>Broad Institute<p>
+</blockquote>
+
+<p>
+	<a class="btn" href="http://broadinstitute.github.io/picard/index.html" target="_blank">Visit Picard Tools Website »</a>
+	<a class="btn" href="http://broadinstitute.github.io/picard/index.html" target="_blank">Developer Documentation »</a>
+	<a class="btn" href="https://github.com/broadinstitute/picard" target="_blank">GitHub »</a>	
+</p>
+
+
+
+
+
+<!-- ######################################### SECTION ######################################### -->
+<hr>
+<h3>Just example visual ideas.</h3>
+Highlighting some code.
+<pre><code>sudo apt-get install netatalk</code></pre>
+<code>sudo apt-get install netatalk</code>
+
+
+<!-- ######################################### SECTION ######################################### -->
+<!-- Template
+<hr>
+<h3>Funcition - PROGRAM_NAME</h3>
+<p>Disc</p>
+<blockquote cite="http:">
+	<p><i>QUOTE HERE! </i></p>
+	<br>
+	<p>PEOPLE</p>
+	<p>ORG<p>
+</blockquote>
+
+<p>Citation: CITATION.
+	<a  href="http" target="_blank"> [link]</a></p>
+	<a class="btn" href="http://" target="_blank">Visit Developer Website »</a>
+	<a class="btn" href="http://" target="_blank">Developer Documentation »</a>
+</p>
+-->
+
+<hr>
+</body>
+</html>
+
+

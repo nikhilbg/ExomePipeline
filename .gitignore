@@ -1,3 +1,5 @@
 *.bam
 *~
 Icon*
+node_modules/
+exome_pipeline_resource_pages/index.html
