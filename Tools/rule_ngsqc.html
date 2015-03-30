@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8" />
+	<title>RULE_TEMPLATE</title>
+</head>
+<body>
+	<!-- Code Parameter -->
+	<div style="border-radius: 10px; background-color:Gainsboro; padding: 10px;">
+			<p><b>ngsqc.rl</b> - A Snakemake rule that runs NGS-QC Toolkit to determine NGS sequence quality.
+			<br>Version: x.x</p>
+			<div style="border-radius: 10px; background-color:white; ; padding: 10px;">
+				<font color="red">
+						<font color="gray">#  - ngsqc.rl</font>
+						<br><font color="gray"># FILE: ngsqc.rl</font>
+						<br><font color="gray"># Date or version: XXXX </font>
+						<br>rule ngsqc:
+						<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;input:
+						<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"{x}.R1.fastq",
+						<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"{x}.R2.fastq"
+						<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;output:
+						<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"QC/{x}.R1.fastq_filtered",
+						<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"QC/{x}.R2.fastq_filtered"
+						<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;params: illuqc=config['bin']['NGSQCTOOLKIT']
+						<br>shell:  "{params.illuqc} -pe {input[0]} {input[1]} 3 A -o QC"
+				</font>
+			</div>
+	</div>
+
+</body>
+</html>
