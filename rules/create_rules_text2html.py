@@ -16,7 +16,7 @@
 
 import sys, getopt
 
-def main(argv):
+def main(argv): 
    rulefile = ''
    rulename = ''
    outputfile = ''

@@ -29,12 +29,12 @@ rule batchgvcf:
     params:
     run: """
          import os
-         o=os.popen("ls *.g.vcf>all.g.vcf;split -l 2 all.g.vcf")         
+         o=os.popen("ls *.g.vcf>all.g.vcf;split -l 2 all.g.vcf")
          fl=os.popen("ls xa?").read()
          F=open("gvcf.list","w")
          F.write(fl)
          F.close()
-         
+
          """
 
 </font></pre>
@@ -42,3 +42,4 @@ rule batchgvcf:
 </div>
 </body>
 </html>
+ 

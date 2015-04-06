@@ -29,7 +29,7 @@ rule gatk_variant_recal:
         output: recal = 'all.{mode}.recal', tranches ='../gvcf/all.{mode}.tranches', plotting = 'all.{mode}.plotting.R'
         params: batch="-l nodes=1:gpfs", GATK_BASE=config.GATK_BASE2, REF=config.REF, recal=get_recal_params, Java=config.JAVA
 	threads: 16
-        run: 
+        run:
 	    shell ('{params.Java}/{params.GATK_BASE} -T VariantRecalibrator -nt {threads} -R {params.REF} -input {input.vcf} {params.recal} -tranche 100.0 -tranche 99.9 -tranche 99.0 -tranche 90.0 -recalFile {output.recal} -tranchesFile {output.tranches} -rscriptFile {output.plotting}')
 
 
@@ -38,3 +38,4 @@ rule gatk_variant_recal:
 </div>
 </body>
 </html>
+ 

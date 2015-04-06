@@ -24,7 +24,7 @@
      <font color="gray"># Comment</font>
      <pre><font color="red">
 rule map_pe:
-    input:  config['references']['GENOME']+".bwt",config['references']['GENOME'], 
+    input:  config['references']['GENOME']+".bwt",config['references']['GENOME'],
             "{x}.R1.trimmed.fastq",
             "{x}.R2.trimmed.fastq"
     output: "{x}.sam"
@@ -36,3 +36,4 @@ rule map_pe:
 </div>
 </body>
 </html>
+ 

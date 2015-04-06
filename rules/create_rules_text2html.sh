@@ -36,7 +36,7 @@ do
 
 
   echo "<!-- #### $RULE_NAME #### -->" >> $RULES2HTML_DIR/MenuRules.html
-  echo "<br><a href=\"./rule_$RULE_NAME.html\" target=\"view\">$RULE_NAME.rl</a>" >> $RULES2HTML_DIR/MenuRules.html
+  echo "<br><a href=\"rule_$RULE_NAME.html\" target=\"view\">$RULE_NAME.rl</a>" >> $RULES2HTML_DIR/MenuRules.html
   echo "" >> $RULES2HTML_DIR/MenuRules.html
 done
 
