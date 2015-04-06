@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
      <meta charset="utf-8" />
-     <title>Rule Documentation: ngsqc</title>
+     <title>Rule Documentation: gatk_genotyping</title>
      <link href="../assets/bootstrap.css" rel="stylesheet">
 <style type="text/css">
      pre {
@@ -17,22 +17,20 @@
 <body>
      <!-- Code Parameter -->
      <div style="border-radius: 10px; background-color:Gainsboro; padding: 10px;">
-     <p><b>ngsqc.rl</b> - Description
+     <p><b>gatk_genotyping.rl</b> - Description
      <br>Version: x.x</p>
      <div style="border-radius: 10px; background-color:white; ; padding: 10px;">
      <font color="red">
      <font color="gray"># Comment</font>
      <pre><font color="red">
-rule ngsqc:
-    input:  "{x}.R1.fastq",
-            "{x}.R2.fastq"
-    output: "QC/{x}.R1.fastq_filtered",
-            "QC/{x}.R2.fastq_filtered"
-    params: illuqc=config['bin']['NGSQCTOOLKIT']
-    shell:  "{params.illuqc} -pe {input[0]} {input[1]} 3 A -o QC"
-#    shell:  "{params.illuqc} -pe {input[0]} {input[1]} 3 A -onlyStat -o QC"
-
-
+rule gatk_genotyping:
+	input: gvcf = expand("../gvcf/{sample}.gvcf", sample=samples)
+	output: '../gvcf/all.vcf'	
+	params: batch="-l nodes=1:gpfs", GATK_BASE=config.GATK_BASE2, REF=config.REF, snp138=config.SNP138
+        threads: THREADS
+        run:
+		gvcf = gatk_multi_arg(" --variant", input.gvcf)
+		shell('/usr/local/java/jdk1.7.0_02/bin/{params.GATK_BASE} -T GenotypeGVCFs -R {params.REF} --annotation InbreedingCoeff --annotation FisherStrand --annotation QualByDepth --annotation ChromosomeCounts {gvcf} --dbsnp {params.snp138} -o {output}')
 
 </font></pre>
 </div>

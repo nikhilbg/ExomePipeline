@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
      <meta charset="utf-8" />
-     <title>Rule Documentation: ngsqc</title>
+     <title>Rule Documentation: trimmomatic</title>
      <link href="../assets/bootstrap.css" rel="stylesheet">
 <style type="text/css">
      pre {
@@ -17,20 +17,26 @@
 <body>
      <!-- Code Parameter -->
      <div style="border-radius: 10px; background-color:Gainsboro; padding: 10px;">
-     <p><b>ngsqc.rl</b> - Description
+     <p><b>trimmomatic.rl</b> - Description
      <br>Version: x.x</p>
      <div style="border-radius: 10px; background-color:white; ; padding: 10px;">
      <font color="red">
      <font color="gray"># Comment</font>
      <pre><font color="red">
-rule ngsqc:
+rule trimmomatic:
     input:  "{x}.R1.fastq",
             "{x}.R2.fastq"
-    output: "QC/{x}.R1.fastq_filtered",
-            "QC/{x}.R2.fastq_filtered"
-    params: illuqc=config['bin']['NGSQCTOOLKIT']
-    shell:  "{params.illuqc} -pe {input[0]} {input[1]} 3 A -o QC"
-#    shell:  "{params.illuqc} -pe {input[0]} {input[1]} 3 A -onlyStat -o QC"
+    output: "{x}.R1.trimmed.fastq.bz2",
+            "{x}.R1.trimmed.unpair.fastq.bz2",
+            "{x}.R2.trimmed.fastq.bz2",
+            "{x}.R2.trimmed.unpair.fastq.bz2"
+    params: trimmomatic=config['bin']['TRIMMOMATIC'],
+            adapterfile=config['references']['adapter.file']
+    threads: 32
+    shell:  """
+            {params.trimmomatic} PE -threads {threads} -phred33 -trimlog QC/trim.log {input[0]} {input[1]} {output} ILLUMINACLIP:{params.adapterfile}:3:30:10 LEADING:10 TRAILING:10 SLIDINGWINDOW:4:20 MAXINFO:50:0.8 MINLEN:20
+           """
+
 
 
 

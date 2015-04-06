@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
      <meta charset="utf-8" />
-     <title>Rule Documentation: ngsqc</title>
+     <title>Rule Documentation: batchvcf</title>
      <link href="../assets/bootstrap.css" rel="stylesheet">
 <style type="text/css">
      pre {
@@ -17,22 +17,25 @@
 <body>
      <!-- Code Parameter -->
      <div style="border-radius: 10px; background-color:Gainsboro; padding: 10px;">
-     <p><b>ngsqc.rl</b> - Description
+     <p><b>batchvcf.rl</b> - Description
      <br>Version: x.x</p>
      <div style="border-radius: 10px; background-color:white; ; padding: 10px;">
      <font color="red">
      <font color="gray"># Comment</font>
      <pre><font color="red">
-rule ngsqc:
-    input:  "{x}.R1.fastq",
-            "{x}.R2.fastq"
-    output: "QC/{x}.R1.fastq_filtered",
-            "QC/{x}.R2.fastq_filtered"
-    params: illuqc=config['bin']['NGSQCTOOLKIT']
-    shell:  "{params.illuqc} -pe {input[0]} {input[1]} 3 A -o QC"
-#    shell:  "{params.illuqc} -pe {input[0]} {input[1]} 3 A -onlyStat -o QC"
-
-
+rule batchgvcf:
+    input: lambda wildcards: config['project']['units'][wildcards.x][0]+".g.vcf"
+    output: "xaa"
+    params:
+    run: """
+         import os
+         o=os.popen("ls *.g.vcf>all.g.vcf;split -l 2 all.g.vcf")         
+         fl=os.popen("ls xa?").read()
+         F=open("gvcf.list","w")
+         F.write(fl)
+         F.close()
+         
+         """
 
 </font></pre>
 </div>

@@ -3,8 +3,16 @@
 <html lang="en">
 <head>
 	<meta charset="utf-8" />
-	<title>>Somatic Variant Calling - VarSca</title>
+	<title>Somatic Variant Calling - VarSca</title>
 	<link href="../assets/bootstrap.css" rel="stylesheet">
+    <style type="text/css">
+      iframe {
+	      scrolling="no";
+	      width: 1000px;
+	      border: none;
+	      seamless;
+      }
+    </style>
 </head>
 <body>
 	<hr>
@@ -19,6 +27,10 @@
 
 	<p>Citation: Koboldt DC, Zhang Q, Larson DE, Shen D, McLellan MD, Lin L, Miller CA, Mardis ER, Ding L, Wilson RK. VarScan 2: somatic mutation and copy number alteration discovery in cancer by exome sequencing. Genome Res. 2012 Mar;22(3):568-76
 		<a  href="http://www.ncbi.nlm.nih.gov/pubmed/22300766" target="_blank"> [link]</a></p>
+	<!-- Code Parameter -->
+	<!-- ######################################### NGS_QC_Toolkit ######################################### -->
+	<iframe src="../Rules/rule_varscan.html" height="410px"></iframe>
+	<p>
 		<a class="btn" href="http://varscan.sourceforge.net" target="_blank">Visit VarScan Website »</a>
 		<a class="btn" href="http://varscan.sourceforge.net/somatic-calling.html" target="_blank">VarScan Documentation »</a>
 		<a class="btn" href="http://sourceforge.net/projects/varscan/files/" target="_blank">Sourceforge »</a>

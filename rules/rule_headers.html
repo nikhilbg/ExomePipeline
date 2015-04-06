@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
      <meta charset="utf-8" />
-     <title>Rule Documentation: ngsqc</title>
+     <title>Rule Documentation: headers</title>
      <link href="../assets/bootstrap.css" rel="stylesheet">
 <style type="text/css">
      pre {
@@ -17,22 +17,17 @@
 <body>
      <!-- Code Parameter -->
      <div style="border-radius: 10px; background-color:Gainsboro; padding: 10px;">
-     <p><b>ngsqc.rl</b> - Description
+     <p><b>headers.rl</b> - Description
      <br>Version: x.x</p>
      <div style="border-radius: 10px; background-color:white; ; padding: 10px;">
      <font color="red">
      <font color="gray"># Comment</font>
      <pre><font color="red">
-rule ngsqc:
-    input:  "{x}.R1.fastq",
-            "{x}.R2.fastq"
-    output: "QC/{x}.R1.fastq_filtered",
-            "QC/{x}.R2.fastq_filtered"
-    params: illuqc=config['bin']['NGSQCTOOLKIT']
-    shell:  "{params.illuqc} -pe {input[0]} {input[1]} 3 A -o QC"
-#    shell:  "{params.illuqc} -pe {input[0]} {input[1]} 3 A -onlyStat -o QC"
-
-
+rule headers:
+     input:  "{x}.dedup.bam"
+     output: "{x}.fin.bam"
+     params: picard1=config['bin']['PICARD1']
+     run:  rgid=config['project']['units'][wildcards.x];rgpl=config['platform'];shell('{params.picard1} I={input} O={output} RGID={rgid} RGPL={rgpl} RGLB={rgpl} RGPU={rgpl} RGSM={input} RGCN=Melanoma RGDS={input}')
 
 </font></pre>
 </div>
