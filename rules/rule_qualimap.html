@@ -32,7 +32,7 @@ rule qualimap:
     output: "QC/{x}.qualimapReport.pdf"
     params: qualimap=config['bin']['QUALIMAP'],genome=config['references']['GENOME']
     shell:  "{params.qualimap} bamqc -bam {input} -c gd HUMAN -outfile {output} -outformat PDF -nw 500 -p NON-STRAND-SPECIFIC"
-    #shell:  "{params.qualimap} bamqc -bam {input} -c gd {params.genome} -outdir QC -outformat HTML -nw 500 -p NON-STRAND-SPECIFIC"    
+    #shell:  "{params.qualimap} bamqc -bam {input} -c gd {params.genome} -outdir QC -outformat HTML -nw 500 -p NON-STRAND-SPECIFIC"
 
 </font></pre>
 </div>

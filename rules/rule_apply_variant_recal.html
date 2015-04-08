@@ -29,9 +29,9 @@
      <pre><font color="red">
 rule apply_variant_recal:
 	input: vcf="combined.gvcf","all.snp.recal", "all.snp.tranches","all.indel.recal", "all.indel.tranches"
-        output: "all.vqsr.snp.vcf", "all.vqsr.indel.vcf" 
+        output: "all.vqsr.snp.vcf", "all.vqsr.indel.vcf"
         params: GATK=config['bin']['GATK'], REF=config['references']['GENOME']
-        run: 
+        run:
           for mode in ["snp","indel"]:
               rfile="all."+mode+".recal"
               tfile="all."+mode+".tranches"

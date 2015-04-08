@@ -29,7 +29,7 @@
      <pre><font color="red">
 rule gatk_genotyping:
 	input: gvcf = expand("../gvcf/{sample}.gvcf", sample=samples)
-	output: '../gvcf/all.vcf'	
+	output: '../gvcf/all.vcf'
 	params: batch="-l nodes=1:gpfs", GATK_BASE=config.GATK_BASE2, REF=config.REF, snp138=config.SNP138
         threads: THREADS
         run:

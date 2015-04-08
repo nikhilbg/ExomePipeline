@@ -15,7 +15,7 @@
 RULES_DIR=/Users/mcintoshc/Desktop/Pipeline-test/Rules
 RULES2HTML_DIR=/Users/mcintoshc/GitHub/ExomePipeline/Rules
 SCRIPT_DIR=$RULES2HTML_DIR
-
+ 
 ## These were fullishly done by hand
 #
 

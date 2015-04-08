@@ -28,10 +28,10 @@
      <font color="gray"># Comment</font>
      <pre><font color="red">
 rule combine:
-    input:  "xaa"
+    input:  "xaa" 
     output: "xaa.gvcf"
     params: gatk=config['bin']['GATK'],genome=config['references']['GENOME']
-    run: 
+    run:
       o=os.popen("ls xa?")
       for I in o.read().split():
           F=open(I,"r")
@@ -42,7 +42,7 @@ rule combine:
           cmd="{params.gatk} -R {params.genome} -T CombineGVCFs -o "+out+ var
           print(cmd)
           shell(cmd)
-          
+
 </font></pre>
 </div>
 </div>
