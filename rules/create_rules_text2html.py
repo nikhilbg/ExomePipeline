@@ -54,6 +54,13 @@ def main(argv):
    OUT_HTML_FILE.write("          background-color:white;\n")
    OUT_HTML_FILE.write("          border: none;\n")
    OUT_HTML_FILE.write("          margin: 1em 0; }\n")
+   
+   
+   OUT_HTML_FILE.write("     body {\n")
+   OUT_HTML_FILE.write("          padding-left: 32px;\n")
+   OUT_HTML_FILE.write("          padding-right: 32px;\n")
+   OUT_HTML_FILE.write("          min-width: 800px;\n")
+
    OUT_HTML_FILE.write("</style>\n")
    OUT_HTML_FILE.write("</head>\n")
    OUT_HTML_FILE.write("<body>\n")

@@ -25,7 +25,7 @@ clear;
  echo "<head>" >> $RULES2HTML_DIR/MenuRules.html
  echo "<title></title>" >> $RULES2HTML_DIR/MenuRules.html
  echo "</head>" >> $RULES2HTML_DIR/MenuRules.html
-
+ echo "<img src=\"../fk_logo_thumbnail_id.jpg\" alt=\"CCBR Logo\" style=\"width:184px;height:46px\">" >> $RULES2HTML_DIR/MenuRules.html
 for RULE_NAME in all-exomeseq-germline all-exomeseq-pairs all-initialqc annovar apply_variant_recal batchgvcf batchvcf callvariant checkqc combine coverage_qc fastq fastqc fastqc2 flagstats flagstats_dedup gatk_genotyping gatk_htc gatk-apply-vqsr gatk-genotyping gatk-htc gatk-variant-recal genotypegvcfs genotypegvcfs2 headers index_ref initialqc map_pe markdups mpileup ngsqc novoalign qualimap realign recal sam2bam sort trimmomatic variant_annotator variant_annotator_alt variant_annotator2 variant_recal varscan
 do
   echo "Working on $RULES2HTML_DIR/rule_$RULE_NAME.html"

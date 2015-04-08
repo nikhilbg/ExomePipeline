@@ -12,6 +12,10 @@
           background-color:white;
           border: none;
           margin: 1em 0; }
+     body {
+          padding-left: 32px;
+          padding-right: 32px;
+          min-width: 800px;
 </style>
 </head>
 <body>
@@ -27,7 +31,7 @@ rule combine:
     input:  "xaa"
     output: "xaa.gvcf"
     params: gatk=config['bin']['GATK'],genome=config['references']['GENOME']
-    run:
+    run: 
       o=os.popen("ls xa?")
       for I in o.read().split():
           F=open(I,"r")
@@ -38,10 +42,9 @@ rule combine:
           cmd="{params.gatk} -R {params.genome} -T CombineGVCFs -o "+out+ var
           print(cmd)
           shell(cmd)
-
+          
 </font></pre>
 </div>
 </div>
 </body>
 </html>
- 

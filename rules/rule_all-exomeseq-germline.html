@@ -12,6 +12,10 @@
           background-color:white;
           border: none;
           margin: 1em 0; }
+     body {
+          padding-left: 32px;
+          padding-right: 32px;
+          min-width: 800px;
 </style>
 </head>
 <body>
@@ -29,11 +33,10 @@ rule all_exomeseq_germline:
             expand("QC/{s}.qualimapReport.pdf",s=samples),
             expand("QC/{s}.flags",s=samples),
             expand("QC/{s}.dedup.flags",s=samples)
-    output:
+    output: 
 
 </font></pre>
 </div>
 </div>
 </body>
 </html>
- 
