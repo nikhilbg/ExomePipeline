@@ -1,0 +1,50 @@
+{
+    "project": {
+        "analyst": "",
+        "annotation": "hg19",
+        "batchsize": "20",
+        "binset": "standard-bin",
+        "bysample": "no",
+        "cluster": "cluster_medium.json",
+        "comments": "Enter comments here.Enter comments here.\n\n",
+        "custom": [],
+        "datapath": "/data/CCBR/dev/Exome-seq-pipeline/fda_consistency/reads",
+        "efiletype": "fastq",
+        "filetype": "fastq.gz",
+        "id": "",
+        "organism": "",
+        "pairs": {},
+        "pi": "",
+        "pipeline": "exomeseq-germline-recal",
+        "platform": "Illumina",
+        "poc": "",
+        "rgid": {
+            "NA12878-Garvan-Vial1": {
+                "rgcn": "na",
+                "rglb": "na",
+                "rgpl": "ILLUMINA",
+                "rgpu": "na",
+                "rgsm": "NA12878-Garvan-Vial1"
+            },
+            "TSNano_1lane_L008_13801_NA12878": {
+                "rgcn": "na",
+                "rglb": "na",
+                "rgpl": "ILLUMINA",
+                "rgpu": "na",
+                "rgsm": "TSNano_1lane_L008_13801_NA12878"
+            }
+        },
+        "samples": {
+            "na": "na"
+        },
+        "smparams": [],
+        "technique": "",
+        "units": {
+            "NA12878-Garvan-Vial1": "NA12878-Garvan-Vial1",
+            "TSNano_1lane_L008_13801_NA12878": "TSNano_1lane_L008_13801_NA12878"
+        },
+        "username": "",
+        "version": "1.0",
+        "workpath": "/gpfs/gsfs4/users/CCBR/dev/FDA-Contest/test3/Results"
+    }
+}
