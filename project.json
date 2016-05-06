@@ -1,50 +1,50 @@
 {
     "project": {
-        "analyst": "",
+        "analyst": "lackjb",
         "annotation": "hg19",
         "batchsize": "20",
         "binset": "standard-bin",
         "bysample": "no",
         "cluster": "cluster_medium.json",
-        "comments": "Enter comments here.Enter comments here.\n\n",
+        "comments": "Enter comments here.\n",
         "custom": [],
-        "datapath": "/data/CCBR/dev/Exome-seq-pipeline/fda_consistency/reads",
+        "datapath": "/data/CCBR/dev/Exome-seq-pipeline/somatic_test_out",
         "efiletype": "fastq",
-        "filetype": "fastq.gz",
-        "id": "",
-        "organism": "",
+        "filetype": "dedup.bam",
+        "id": "somatic_test",
+        "organism": "H. sapiens",
         "pairs": {},
         "pi": "",
-        "pipeline": "exomeseq-germline-recal",
+        "pipeline": "exomeseq-somatic",
         "platform": "Illumina",
-        "poc": "",
+        "poc": "lackjb",
         "rgid": {
-            "NA12878-Garvan-Vial1": {
+            "3435T": {
                 "rgcn": "na",
                 "rglb": "na",
                 "rgpl": "ILLUMINA",
                 "rgpu": "na",
-                "rgsm": "NA12878-Garvan-Vial1"
+                "rgsm": "3435T"
             },
-            "TSNano_1lane_L008_13801_NA12878": {
+            "D115": {
                 "rgcn": "na",
                 "rglb": "na",
                 "rgpl": "ILLUMINA",
                 "rgpu": "na",
-                "rgsm": "TSNano_1lane_L008_13801_NA12878"
+                "rgsm": "D115"
             }
         },
         "samples": {
             "na": "na"
         },
         "smparams": [],
-        "technique": "",
+        "technique": "paired",
         "units": {
-            "NA12878-Garvan-Vial1": "NA12878-Garvan-Vial1",
-            "TSNano_1lane_L008_13801_NA12878": "TSNano_1lane_L008_13801_NA12878"
+            "3435T": "3435T",
+            "D115": "D115"
         },
-        "username": "",
+        "username": "lackjb",
         "version": "1.0",
-        "workpath": "/gpfs/gsfs4/users/CCBR/dev/FDA-Contest/test3/Results"
+        "workpath": "/data/CCBR/dev/Exome-seq-pipeline/v1.0_test/somatic"
     }
 }
