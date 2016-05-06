@@ -1,5 +1,7 @@
  {
     "rules": {
+        "make.somatic.network": ["exomeseq-somatic"],
+        "somatic.germline.calls": ["exomeseq-somatic"],
         "avia": ["exomeseq-germline","exomeseq-germline-recal","exomeseq-germline-partial"],
         "ngsqc": ["initialqc","wgslow"],
         "fastqc.fastq": ["initialqc","wgslow"],
