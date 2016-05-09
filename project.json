@@ -13,7 +13,12 @@
         "filetype": "dedup.bam",
         "id": "somatic_test",
         "organism": "H. sapiens",
-        "pairs": {},
+        "pairs": {
+            "3435T+D115": [
+                "3435T",
+                "D115"
+            ]
+        },
         "pi": "",
         "pipeline": "exomeseq-somatic",
         "platform": "Illumina",
