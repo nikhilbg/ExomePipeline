@@ -8,9 +8,9 @@
         "cluster": "cluster_medium.json",
         "comments": "Enter comments here.\n",
         "custom": [],
-        "datapath": "/data/CCBR/dev/Exome-seq-pipeline/somatic_test_out",
+        "datapath": "/data/CCBR/dev/Exome-seq-pipeline/v1.0_test/somatic",
         "efiletype": "fastq",
-        "filetype": "dedup.bam",
+        "filetype": "fastq.gz",
         "id": "somatic_test",
         "organism": "H. sapiens",
         "pairs": {

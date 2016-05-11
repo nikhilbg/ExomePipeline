@@ -1,5 +1,5 @@
 rule somatic_germline_calls:
-     input:  expand("{s}"+".paired.vcf",s=pairs)
+     input:  expand("{s}"+".realign.bam",s=samples)
      output: unfiltered="germline.vcf",
              filtered="germline_snps.vcf"
      params: genome=config['references']['GENOME'],regions=config['references']['REFFLAT'],rname="pl:germcalls"
