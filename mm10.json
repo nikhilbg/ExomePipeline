@@ -13,7 +13,7 @@
     "nextera2": "CTGTCTCTTATACACATCTGACGCTGCCGACGA",
     "ORGANISM": "MOUSE",
     "SNP138": "/data/CCBR/projects/ccbr615/mm10/sorted.dict.repaired_mgp.v5.merged.snps_all.dbSNP142.vcf",
-    "REFFLAT": "/data/CCBR/local/lib/SS_mouse_exome.bed",
+    "REFFLAT": "/data/CCBR/local/lib/SS_mouse_exome_mm10.bed",
     "SNPEFF_CONFIG": "/usr/local/apps/snpEff/4.1c/snpEff.config",
     "SNPEFF_GENOME": "GRCm38.78",
     "FILTERSIFT": "( QUAL >= 20 )",
