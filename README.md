@@ -6,14 +6,21 @@ Pipeliner provides access to some of the NGS data analysis pipelines used by CCB
   
 ## Quick Start
 
+### Prerequisites
+
+* An account on the NIH Biowulf Linux Cluster 
+
+
 Pipeliner runs on the NIH Biowulf cluster and uses a graphical interface. To use the program one must log into Biowulf using ssh with X11 packet forwarding.  For instance:
+
+### Running Pipeliner
 
 ```
 ssh -Y username@biowulf.nih.gov
-
 ```
 
 Once logged in, launch the Pipeliner program:
+
 ```
 /path/to/pipeliner/install/runpipe.sh
 ```
@@ -31,13 +38,9 @@ Within the Pipeliner program, the following steps must be executed in order:
 * Set the working directory--this is the directory in which all output files will appear and must already exist
 * Set the data source--this is the directory containing the starting data which is generally a set of files containing paired end fastq reads
 * Initialize the working directory--this step first clears the working directory, then makes a few subdirectories within it and populates these with a number of files needed to run the pipelines
-* Link the data files to the working directory--this makes symbolic links from the data files into the working directory
+* Link the data files to the working directory--this step creates symbolic links from the data files into the working directory to prevent the need to copy or move large files
 * Perform a dry run to verify that the pipeline is configured properly--if the dry run produces errors, these must be corrected prior to launching
 * Launch the pipeline--this submits the pipeline job to the Biowulf cluster
-
-### Prerequisites
-
-* An account on the NIH Biowulf Linux Cluster 
 
 
 ## Configuration and Details
@@ -46,23 +49,30 @@ Pipeliner uses a program called Snakemake to manage pipeline workflows.
 
 >[https://bitbucket.org/snakemake/snakemake/wiki/Home] for details.
 
-Snakemake, in turn, accepts a configuration file formatted in JSON (Javascript Object Notation). The principal configuration files used by Pipeliner are:
+Snakemake, in turn, accepts a configuration file formatted in JSON (Javascript Object Notation). 
+
+### The principal configuration files used by Pipeliner
 
 - hg19.json :references for human genome version 19/GRch37
 - standard-bin.json :paths to programs used in the pipeline
 - rules.json :lists of Snakemake rules assigned to named pipelines
 - cluster.json :SLURM parameters for each rule (memory requested, time, # cpus)
 
-Essential backend python programs include:
+### Backend python programs
 
 - pipeliner.py :main program including GUI components
 - makeasnake.py :called by Pipeliner to build Snakefiles required by Snakemake
 - stats2html.py :builds reports at end of pipeline run
 
-Essential Directories
-- Data :should contain files with adapter sequences to be trimmed in fasta format.  These should be referenced in the appropriate reference json file, e.g. hg19.json.
-- Reports
-- 
+### Sub Directories used within working directory
+
+- Reports :contains scripts for aggregate report generation and aggregate reports created by Pipeliner
+- QC :contains QC reports generated during various pipeline steps
+- Scripts :contains custom scripts used by some pipelines
+
+### Other subdirectories
+
+- Data :resided within the installation Pipeliner directory and contains files specifying adapter sequences to be trimmed from reads, in fasta format.  These should be referenced in the appropriate reference json file, e.g. hg19.json.
 
 
 ## Pipelines Implemented
@@ -70,14 +80,18 @@ Essential Directories
 - ExomeSeqPairs
 - ExomeSeqGermline
 
-## Pipelines Planned
-
+## Pipelines Planned for Inclusion
 
 - ChipSeq
 - mirSeq
 - RNASeq
 
-## Adding your Own Pipelines
+## Organisms supported
+
+- Human (hg19)
+- Mouse (mm10)
+
+## Adding Custom Pipelines
 
 You can configure new pipelines by adding Snakemake rules to the Rules directory and referencing them within 'rules.json' as requirements for named pipelines by adding the name of the rule (key) to the json keys and adding the name of the pipeline requiring the rule to the list (the value) for the key.
 
