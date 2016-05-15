@@ -47,7 +47,7 @@ Within the *Pipeliner* program, the following steps must be executed in order:
 
 *Pipeliner* uses a program called Snakemake to manage pipeline workflows.
 
->(Snakemake)[https://bitbucket.org/snakemake/snakemake/wiki/Home]
+>[https://bitbucket.org/snakemake/snakemake/wiki/Home](Snakemake)
 
 Snakemake, in turn, accepts a configuration file formatted in JSON (Javascript Object Notation). 
 
@@ -72,7 +72,7 @@ Snakemake, in turn, accepts a configuration file formatted in JSON (Javascript O
 
 ### Other subdirectories
 
-- `Data` :resides within the installation *Pipeliner* directory and contains files specifying adapter sequences to be trimmed from reads, in fasta format.  These should be referenced in the appropriate reference json file, e.g. hg19.json.
+- `Data` :resides within the installation *Pipeliner* directory and contains files specifying adapter sequences to be trimmed from reads, in fasta format.  These should be referenced in the appropriate reference json file, e.g. `hg19.json`.
 
 
 ## Pipelines Implemented
