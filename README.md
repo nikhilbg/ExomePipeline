@@ -47,7 +47,7 @@ Within the *Pipeliner* program, the following steps must be executed in order:
 
 *Pipeliner* uses a program called Snakemake to manage pipeline workflows.
 
->[https://bitbucket.org/snakemake/snakemake/wiki/Home] for details.
+>(Snakemake)[https://bitbucket.org/snakemake/snakemake/wiki/Home]
 
 Snakemake, in turn, accepts a configuration file formatted in JSON (Javascript Object Notation). 
 
@@ -60,9 +60,9 @@ Snakemake, in turn, accepts a configuration file formatted in JSON (Javascript O
 
 ### Backend python programs
 
-- pipeliner.py :main program including GUI components
+- pipeliner.py :main program, including GUI components
 - makeasnake.py :called by *Pipeliner* to build Snakefiles required by Snakemake
-- stats2html.py :builds reports at end of pipeline run
+- stats2html.py :builds reports at end of a pipeline run
 
 ### Sub Directories used within working directory
 
@@ -93,7 +93,7 @@ Snakemake, in turn, accepts a configuration file formatted in JSON (Javascript O
 
 ## Adding Custom Pipelines
 
-You can configure new pipelines by adding Snakemake rules to the Rules directory and referencing them within 'rules.json' as requirements for named pipelines by adding the name of the rule (key) to the json keys and adding the name of the pipeline requiring the rule to the list (the value) for the key.
+You can configure new pipelines by adding Snakemake rules to the Rules directory and referencing them within 'rules.json' as requirements for named pipelines by adding the name of the rule (key) to the json keys and adding the name of the pipeline requiring the rule to the list (the value) for the key.  A new entry for the pipeline must also be added to the pulldown in the GUI--this requires that `pipeliner.py` be edited.
 
 
 
