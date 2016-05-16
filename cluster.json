@@ -188,5 +188,10 @@
     "varscan":
     {
         "threads": "1"
+    },
+    "gatk_mutect2":
+    {
+        "time": "6-00:00:00",
+        "threads": "4"
     }
 }
