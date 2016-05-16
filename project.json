@@ -8,17 +8,12 @@
         "cluster": "cluster_medium.json",
         "comments": "Enter comments here.\n",
         "custom": [],
-        "datapath": "/data/CCBR/dev/Exome-seq-pipeline/v1.0_test/somatic",
+        "datapath": "/data/CCBR/dev/Exome-seq-pipeline/somatic_test_out",
         "efiletype": "fastq",
-        "filetype": "fastq.gz",
-        "id": "somatic_test",
+        "filetype": "dedup.bam",
+        "id": "test",
         "organism": "H. sapiens",
-        "pairs": {
-            "3435T+D115": [
-                "3435T",
-                "D115"
-            ]
-        },
+        "pairs": {},
         "pi": "",
         "pipeline": "exomeseq-somatic",
         "platform": "Illumina",

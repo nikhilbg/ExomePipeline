@@ -12,7 +12,7 @@ my $vcf=shift;
 
 $cmd = 'module load vcftools; vcftools --vcf ' . $vcf . ' --plink --remove-indels --out plink';
 system($cmd);
-$cmd = 'module load plink; plink --file plink --distance-matrix --out distance --cluster';
+$cmd = 'module load plink/1.07; plink --file plink --distance-matrix --out distance --cluster';
 system($cmd);
 $cmd = 'cut -f 1 -d \' \' distance.cluster2 > samples.txt';
 system($cmd);
