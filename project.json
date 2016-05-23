@@ -1,6 +1,6 @@
 {
     "project": {
-        "analyst": "Carl McIntosh",
+        "analyst": "lackjb",
         "annotation": "hg19",
         "batchsize": "20",
         "binset": "standard-bin",
@@ -8,27 +8,51 @@
         "cluster": "cluster_medium.json",
         "comments": "Enter comments here.\n",
         "custom": [],
-        "datapath": "",
+        "datapath": "/data/CCBR/dev/Exome-seq-pipeline/SF_test/reads",
         "efiletype": "fastq",
         "filetype": "fastq.gz",
-        "id": "ccbr-xxxx",
-        "organism": "Human",
-        "pairs": {
-            "na": "na"
-        },
+        "id": "test",
+        "organism": "H. sapiens",
+        "pairs": {},
         "pi": "",
         "pipeline": "initialqc",
         "platform": "Illumina",
-        "poc": "Peter FitzGerald",
-        "rgid": {},
+        "poc": "lackjb",
+        "rgid": {
+            "F22": {
+                "rgcn": "na",
+                "rglb": "na",
+                "rgpl": "ILLUMINA",
+                "rgpu": "na",
+                "rgsm": "F22"
+            },
+            "F23": {
+                "rgcn": "na",
+                "rglb": "na",
+                "rgpl": "ILLUMINA",
+                "rgpu": "na",
+                "rgsm": "F23"
+            },
+            "F24": {
+                "rgcn": "na",
+                "rglb": "na",
+                "rgpl": "ILLUMINA",
+                "rgpu": "na",
+                "rgsm": "F24"
+            }
+        },
         "samples": {
             "na": "na"
         },
         "smparams": [],
-        "technique": "Exome",
-        "units": {},
-        "username": "mcintoshc",
+        "technique": "paired",
+        "units": {
+            "F22": "F22",
+            "F23": "F23",
+            "F24": "F24"
+        },
+        "username": "lackjb",
         "version": "1.0",
-        "workpath": ""
+        "workpath": "/data/CCBR/dev/Exome-seq-pipeline/v1.0_test/germline_newer"
     }
 }
