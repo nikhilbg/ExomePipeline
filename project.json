@@ -1,6 +1,6 @@
 {
     "project": {
-        "analyst": "lackjb",
+        "analyst": "Carl McIntosh",
         "annotation": "hg19",
         "batchsize": "20",
         "binset": "standard-bin",
@@ -8,43 +8,27 @@
         "cluster": "cluster_medium.json",
         "comments": "Enter comments here.\n",
         "custom": [],
-        "datapath": "/data/CCBR/dev/Exome-seq-pipeline/somatic_test_out",
+        "datapath": "",
         "efiletype": "fastq",
-        "filetype": "dedup.bam",
-        "id": "test",
-        "organism": "H. sapiens",
-        "pairs": {},
-        "pi": "",
-        "pipeline": "exomeseq-somatic",
-        "platform": "Illumina",
-        "poc": "lackjb",
-        "rgid": {
-            "3435T": {
-                "rgcn": "na",
-                "rglb": "na",
-                "rgpl": "ILLUMINA",
-                "rgpu": "na",
-                "rgsm": "3435T"
-            },
-            "D115": {
-                "rgcn": "na",
-                "rglb": "na",
-                "rgpl": "ILLUMINA",
-                "rgpu": "na",
-                "rgsm": "D115"
-            }
+        "filetype": "fastq.gz",
+        "id": "ccbr-xxxx",
+        "organism": "Human",
+        "pairs": {
+            "na": "na"
         },
+        "pi": "",
+        "pipeline": "initialqc",
+        "platform": "Illumina",
+        "poc": "Peter FitzGerald",
+        "rgid": {},
         "samples": {
             "na": "na"
         },
         "smparams": [],
-        "technique": "paired",
-        "units": {
-            "3435T": "3435T",
-            "D115": "D115"
-        },
-        "username": "lackjb",
+        "technique": "Exome",
+        "units": {},
+        "username": "mcintoshc",
         "version": "1.0",
-        "workpath": "/data/CCBR/dev/Exome-seq-pipeline/v1.0_test/somatic"
+        "workpath": ""
     }
 }
