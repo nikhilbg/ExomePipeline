@@ -48,6 +48,7 @@ while ($status == 0) {
 				sleep($time);
 			}
 	}
+}
 close G;
 }
 
