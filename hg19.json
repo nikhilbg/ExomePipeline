@@ -31,7 +31,7 @@
     "gtfERCC": "gencode.vM4.all_ERCC.gtf",
     "genomeRnaseqErcc": "GRCm38.p3.ERCC.genome.fa",
     "DB29": "/data/CCBR/local/lib/snpEff_db/dbNSFP2.9.txt.gz",
-    "SNPEFF_CONFIG": "/usr/local/apps/snpEff/4.1c/snpEff.config",
+    "SNPEFF_CONFIG": "/usr/local/apps/snpEff/4.2/snpEff.config",
 #    "FILTERSIFT": "(FILTER='PASS') & ( QUAL >= 20 )",  ###maybe change to 30
     "FILTERSIFT": "( QUAL >= 20 )",
     "SELECTDB": "SIFT_score,SIFT_pred,Polyphen2_HVAR_score,Polyphen2_HVAR_pred,LRT_score,LRT_pred,GERP++_RS,MutationAssessor_score,MutationAssessor_pred,1000Gp1_AF,1000Gp1_EUR_AF,ESP6500_EA_AF,ESP6500_AA_AF",
