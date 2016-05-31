@@ -11,6 +11,10 @@
     {
         "threads": "1"
     },
+    "multiqc":
+    {
+        "threads": "1"
+    },
     "bwa_pe":
     {
         "threads": "4"

@@ -3,6 +3,7 @@
         "avia": ["exomeseq-germline","exomeseq-germline-recal","exomeseq-germline-partial","exomeseq-somatic"],
         "ngsqc": ["initialqc","wgslow"],
         "fastqc.fastq": ["initialqc","wgslow"],
+        "multiqc": ["initialqc","wgslow"],
         "fastqc.trimmed": ["initialqc","wgslow"],
         "trimmomatic": ["initialqc","wgslow"],
         "samtools.flagstats": ["none"],
