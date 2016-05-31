@@ -4,5 +4,6 @@ rule all_initialqc:
 #            expand("{s}.R1.trimmed.fastq.bz2",s=samples),
 #            expand("QC/{s}.qualimapReport",s=samples),
             expand("QC/{s}.{r}.trimmed_fastqc.html",s=samples,r=['R1','R1']),
-            expand("{s}.dedup.bam",s=samples)
+            expand("{s}.dedup.bam",s=samples),
+            "multiqc_report.html"
     output: 
