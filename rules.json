@@ -4,6 +4,7 @@
         "ngsqc": ["initialqc","wgslow"],
         "fastqc.fastq": ["initialqc","wgslow"],
         "multiqc": ["initialqc","wgslow"],
+        "oncotator": ["exomeseq-somatic"],
         "fastqc.trimmed": ["initialqc","wgslow"],
         "trimmomatic": ["initialqc","wgslow"],
         "samtools.flagstats": ["none"],
