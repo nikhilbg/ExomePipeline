@@ -6,5 +6,6 @@ rule all_exomeseq_somatic:
             "merged_somatic_snpEff.vcf",
             "variants.bed",
             "full_annot.txt.zip",
-            "sample_network.bmp"
+            "sample_network.bmp",
+            "somatic_variants.maf"
     output:
