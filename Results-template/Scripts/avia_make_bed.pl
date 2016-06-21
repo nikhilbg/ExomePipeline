@@ -28,8 +28,13 @@ while (<D>){
 		print C "$position $stop $indel -\n";
 	}
 	elsif (length$line[4] > 1) {
-		$indel = substr $line[4], 1;
-		$position = ($line[1] + 1);
-		print C "$position $position - $indel\n";
+		if ($line[4] !~ m',') {
+			$indel = substr $line[4], 1;
+			$position = ($line[1] + 1);
+			print C "$position $position - $indel\n";
+		}
+		else {
+			print C "$line[1] $line[1] $line[3] $line[4]\n";
+		}
 	}
 }
