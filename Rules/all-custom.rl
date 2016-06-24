@@ -1,4 +1,5 @@
-ext='all.snp.dbnsfp.vcf'
+ext='qualimapReport'
+prefix='QC/'
 rule all_custom:
-    input:  expand("{e}",e=ext)
+    input:  expand("{p}{s}.{e}",e=ext,s=samples,p=prefix)
     output: 

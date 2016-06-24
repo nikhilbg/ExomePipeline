@@ -1,4 +1,5 @@
 ext='bam'
+prefix=''
 rule all_custom:
-    input:  expand("{s}.{e}",s=samples,e=ext)
+    input:  expand("{p}{s}.{e}",s=samples,e=ext,p=prefix)
     output: 

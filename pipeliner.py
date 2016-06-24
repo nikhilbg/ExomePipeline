@@ -1136,6 +1136,7 @@ opts2 = ttk.Frame(nbook)
 commentframe = ttk.Frame(nbook)
 runframe=ttk.Frame(nbook)
 manualframe=ttk.Frame(nbook)
+rnaseqframe=ttk.Frame(nbook)
 
 nbook.add(editframe, text='Project Information')
 nbook.add(opts2, text='Pipeline Options')
@@ -1144,6 +1145,7 @@ nbook.add(runframe,text="Run Sequence")
 nbook.add(filesframe, text='Job Status')
 nbook.add(commentframe, text='Comments')
 nbook.add(manualframe,text="Manual")
+nbook.add(rnaseqframe,text="RNASeq Options")
 nbook.pack( side = LEFT,fill=BOTH,padx=10,pady=10,expand=YES )
 
 # projframe = LabelFrame(top,text="Project Json",fg=textLightColor,bg=baseColor)
@@ -1582,6 +1584,20 @@ workE.pack(side=LEFT,pady=5)
 workE.grid(row=6,column=1,sticky=W,padx=10,pady=10)
 workpath.trace('w', makejson)
 
+#########################
+# The RNASeq Pane
+#########################
+
+
+rnaseqopt1s=['hg19','mm10']
+rnaseqopt1 = StringVar()
+rnaseqopt1.set(rnaseqopt1s[0])
+om = OptionMenu(rnaseqframe, rnaseqopt1, *rnaseqopt1s, command=makejson)
+om.config(bg = widgetBgColor,fg=widgetFgColor)
+om["menu"].config(bg = widgetBgColor,fg=widgetFgColor)
+#om.pack(side=LEFT,padx=20,pady=5)
+om.grid(row=2,column=1,sticky=W,padx=10,pady=10)
+
 
 
 #########################
@@ -1590,7 +1606,7 @@ workpath.trace('w', makejson)
 
 pipeline=["initialqc","bam2recal","wgslow","exomeseq-somatic","exomeseq-germline","exomeseq-germline-recal","exomeseq-germline-partial","custom"]
 
-filetypes=['fastq','fastq.gz','trimmed.fastq.gz','fastq.bz2','trimmed.fastq.bz2','sorted.bam','dedup.bam','fin.bam','recal.bam','realign.bam','bam','bai','sam','combined.gvcf','all.snp.dbnsfp.vcf']
+filetypes=['fastq','fastq.gz','R1.trimmed.fastq.gz','fastq.bz2','trimmed.fastq.bz2','sorted.bam','dedup.bam','fin.bam','recal.bam','realign.bam','bam','bai','sam','combined.gvcf','all.snp.dbnsfp.vcf','R1_fastqc.html','qualimapReport']
 filetype = StringVar()
 filetype.set(filetypes[1])
 

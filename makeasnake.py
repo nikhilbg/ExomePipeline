@@ -57,6 +57,10 @@ if pipeline=="custom":
     allrule=Q.read()
     Q.close()
     allrule=re.sub("ext='bam'","ext='%s'"%C['project']['efiletype'],allrule)
+    if C['project']['efiletype']=="R1_fastqc.html" or C['project']['efiletype']=="qualimapReport":
+        prefix="QC/"
+        allrule=re.sub("prefix=''","prefix='%s'"%prefix,allrule)
+        
     Q=open(whereiam+"/Rules/all-custom.rl","w")
     Q.write(allrule)
     Q.close()
