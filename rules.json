@@ -45,6 +45,8 @@
         "gatk.merge.somatic.vcfs": ["exomeseq-somatic"],
         "snpeff_somatic": ["exomeseq-somatic"],
         "avia.make.bed.somatic": ["exomeseq-somatic"],
+        "avia.make.bed.germ": ["exomeseq-germline"],
+        "database_germline": ["exomeseq-germline"],        
         "svdetect": ["none"],
         "bicseq": ["none"]
         },
