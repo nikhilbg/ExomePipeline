@@ -7,5 +7,6 @@ rule all_exomeseq_somatic:
             "variants.bed",
             "full_annot.txt.zip",
             "sample_network.bmp",
-            "somatic_variants.maf"
+            "somatic_variants.maf",
+            "somatic.sig_genes.txt"
     output:
