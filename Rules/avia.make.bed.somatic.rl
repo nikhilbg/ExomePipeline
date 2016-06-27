@@ -1,5 +1,5 @@
 rule avia_make_bed_somatic:
-    input: "merged_somatic.vcf"
+    input: "mutect2/merged_somatic.vcf"
     output:"variants.bed"
     params: batch ="-l nodes=1:gpfs -q ccr",rname="avia.make.bed.somatic"
     shell: """

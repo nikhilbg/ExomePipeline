@@ -1,7 +1,7 @@
 rule all_exomeseq_germline:
     input:  "combined.vcf",
-            expand("all.{type}.dbnsfp.vcf", type=["snp","indel"]),
+            "exome.recode.vcf",
             "full_annot.txt.zip",
             "variants.database",
-            "exome.vcf"
+            "sample_network.bmp"
     output: 

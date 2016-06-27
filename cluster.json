@@ -15,6 +15,11 @@
     {
         "threads": "1"
     },
+    "strelka":
+    {
+        "threads": "4"
+        "mem": "64g",        
+    },
     "bwa_pe":
     {
         "threads": "4"
