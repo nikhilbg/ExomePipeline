@@ -1,7 +1,7 @@
 rule oncotator:
-    input: vcf=lambda wildcards: config['project']['pairs'][wildcards.x][0]+"_"+lambda wildcards: config['project']['pairs'][wildcards.x][1]+".FINAL.vcf",
-           tumor=lambda wildcards: config['project']['pairs'][wildcards.x][1],
-           normal=lambda wildcards: config['project']['pairs'][wildcards.x][0]
-    output: maf=lambda wildcards: config['project']['pairs'][wildcards.x][1]+"_"+lambda wildcards: config['project']['pairs'][wildcards.x][0]+".maf",
+    input: vcf="{p}"+".FINAL.vcf", p=pairs,
+           normal="{p}[0]"+".realign.bam",
+           tumor="{p}[1]"+".realign.bam"
+    output: maf="{p}"+".maf"
     params: rname="pl:oncotator"
-    shell: "cd mutect2; module load oncotator; oncotator -v -o TCGAMAF -i VCF -c $ONCOTATOR_DATASOURCE/tx_exact_uniprot_matches.txt -a Tumor_Sample_Barcode:{params.tumor} -a Matched_Norm_Sample_Barcode:{params.normal} --skip-no-alt --db-dir /fdb/oncotator/oncotator_v1_ds_Jan262015 {input.vcf} oncotator/{output.maf} hg19"
+    shell: "module load oncotator; oncotator -v -o TCGAMAF -i VCF -c $ONCOTATOR_DATASOURCE/tx_exact_uniprot_matches.txt -a Tumor_Sample_Barcode:{input.tumor} -a Matched_Norm_Sample_Barcode:{input.normal} --skip-no-alt --db-dir /fdb/oncotator/oncotator_v1_ds_Jan262015 mutect2/{input.vcf} mutect2/oncotator/{output.maf} hg19"

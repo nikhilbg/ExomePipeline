@@ -3,5 +3,7 @@ rule all_exomeseq_germline:
            "exome.recode.vcf",
            "full_annot.txt.zip",
            "variants.database",
-           "sample_network.bmp"
+           "sample_network.bmp",
+           "snpeff.stats.html",
+           "exome.snpeff.vcf"
     output: 
