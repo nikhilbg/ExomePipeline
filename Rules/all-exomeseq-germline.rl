@@ -4,6 +4,5 @@ rule all_exomeseq_germline:
            "full_annot.txt.zip",
            "variants.database",
            "sample_network.bmp",
-           "snpeff.stats.html",
            "exome.snpeff.vcf"
     output: 
