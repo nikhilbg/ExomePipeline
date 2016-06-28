@@ -17,8 +17,8 @@
     },
     "strelka":
     {
-        "threads": "4"
-        "mem": "64g",        
+        "threads": "4",
+        "mem": "64g"
     },
     "bwa_pe":
     {
@@ -29,7 +29,6 @@
         "mem": "128g",
         "threads": "8"
     },
-
     "fastqc_fastq":
     {
         "threads": "8"

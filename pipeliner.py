@@ -1588,16 +1588,62 @@ workpath.trace('w', makejson)
 # The RNASeq Pane
 #########################
 
+rframe = LabelFrame(rnaseqframe,text="Star",fg=textLightColor,bg=baseColor)
+rframe.pack( side = TOP,fill=X,padx=10,pady=10,expand=YES )
+# 
+r2frame = LabelFrame(rnaseqframe,text="DEseq2",fg=textLightColor, bg=baseColor)
+r2frame.pack( side = TOP,fill=X,padx=10,pady=10,expand=YES )
+
+r3frame = LabelFrame(rnaseqframe,text="EdgeR",fg=textLightColor, bg=baseColor)
+r3frame.pack( side = BOTTOM,fill=X,padx=10,pady=10,expand=YES )
+
+r4frame = LabelFrame(rnaseqframe,text="LimmaVoom",fg=textLightColor, bg=baseColor)
+r4frame.pack( side = BOTTOM,fill=X,padx=10,pady=10,expand=YES )
+
+
 
 rnaseqopt1s=['hg19','mm10']
 rnaseqopt1 = StringVar()
 rnaseqopt1.set(rnaseqopt1s[0])
-om = OptionMenu(rnaseqframe, rnaseqopt1, *rnaseqopt1s, command=makejson)
+om = OptionMenu(rframe, rnaseqopt1, *rnaseqopt1s, command=makejson)
 om.config(bg = widgetBgColor,fg=widgetFgColor)
 om["menu"].config(bg = widgetBgColor,fg=widgetFgColor)
 #om.pack(side=LEFT,padx=20,pady=5)
 om.grid(row=2,column=1,sticky=W,padx=10,pady=10)
 
+rnaseqopt2s=['hg19','mm10']
+rnaseqopt2 = StringVar()
+rnaseqopt2.set(rnaseqopt2s[0])
+om = OptionMenu(r2frame, rnaseqopt2, *rnaseqopt2s, command=makejson)
+om.config(bg = widgetBgColor,fg=widgetFgColor)
+om["menu"].config(bg = widgetBgColor,fg=widgetFgColor)
+#om.pack(side=LEFT,padx=20,pady=5)
+om.grid(row=2,column=1,sticky=W,padx=10,pady=10)
+
+rnaseqopt3s=['hg19','mm10']
+rnaseqopt3 = StringVar()
+rnaseqopt3.set(rnaseqopt2s[0])
+om = OptionMenu(r3frame, rnaseqopt3, *rnaseqopt3s, command=makejson)
+om.config(bg = widgetBgColor,fg=widgetFgColor)
+om["menu"].config(bg = widgetBgColor,fg=widgetFgColor)
+#om.pack(side=LEFT,padx=20,pady=5)
+om.grid(row=2,column=1,sticky=W,padx=10,pady=10)
+
+rnaseqopt4s=['hg19','mm10']
+rnaseqopt4 = StringVar()
+rnaseqopt4.set(rnaseqopt4s[0])
+om = OptionMenu(r4frame, rnaseqopt4, *rnaseqopt4s, command=makejson)
+om.config(bg = widgetBgColor,fg=widgetFgColor)
+om["menu"].config(bg = widgetBgColor,fg=widgetFgColor)
+#om.pack(side=LEFT,padx=20,pady=5)
+om.grid(row=2,column=1,sticky=W,padx=10,pady=10)
+
+rnaseqcheck1=StringVar()
+rnaseqcheckb1 = Checkbutton(r4frame, text="check1",variable=rnaseqcheck1,bg=baseColor,fg=textLightColor,offvalue="no",onvalue="yes")
+#bySample.pack(side=LEFT,padx=5,pady=5)
+rnaseqcheckb1.grid(row=0,column=5,sticky=W,padx=10,pady=10)
+rnaseqcheck1.set("no")
+rnaseqcheck1.trace('w', makejson)
 
 
 #########################
