@@ -1,5 +1,5 @@
 rule oncotator:
-    input: vcf="{p}"+".FINAL.vcf", p=pairs,
+    input: vcf="{p}"+".filtered.vcf", p=pairs,
            normal="{p}[0]"+".realign.bam",
            tumor="{p}[1]"+".realign.bam"
     output: maf="{p}"+".maf"
