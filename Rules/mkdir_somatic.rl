@@ -1,5 +1,5 @@
 rule gatk_realign2:
-        input:  "{x}.dedup.bam"
+        input:  
         output: mutect2="mutect2",
                 cnvkit="cnvkit",
                 strelka="strelka"
