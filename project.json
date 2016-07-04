@@ -1,6 +1,6 @@
 {
     "project": {
-        "analyst": "",
+        "analyst": "lackjb",
         "annotation": "hg19",
         "batchsize": "20",
         "binset": "standard-bin",
@@ -11,8 +11,8 @@
         "datapath": "/data/CCBR/dev/Exome-seq-pipeline/somatic_test_June28",
         "efiletype": "fastq",
         "filetype": "fastq.gz",
-        "id": "",
-        "organism": "",
+        "id": "test",
+        "organism": "h. sapiens",
         "pairs": {
             "D115test+3435Ttest": [
                 "D115test",
@@ -30,7 +30,7 @@
         "pi": "",
         "pipeline": "exomeseq-somatic",
         "platform": "Illumina",
-        "poc": "",
+        "poc": "lackjb",
         "rgid": {
             "3435Ttest": {
                 "rgcn": "na",
@@ -79,7 +79,7 @@
             "na": "na"
         },
         "smparams": [],
-        "technique": "",
+        "technique": "paired",
         "units": {
             "3435Ttest": "3435Ttest",
             "3435TtestA": "3435TtestA",
@@ -88,7 +88,7 @@
             "D115testA": "D115testA",
             "D115testB": "D115testB"
         },
-        "username": "",
+        "username": "lackjb",
         "version": "1.0",
         "workpath": "/data/CCBR/dev/Exome-seq-pipeline/somatic_test_June28"
     }
