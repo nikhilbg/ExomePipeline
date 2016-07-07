@@ -1,4 +1,4 @@
-rule gatk_realign2:
+rule mkdir_somatic:
         input:  
         output: mutect2="mutect2",
                 cnvkit="cnvkit",

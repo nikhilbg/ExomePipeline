@@ -12,7 +12,7 @@
         "efiletype": "fastq",
         "filetype": "fastq.gz",
         "id": "test",
-        "organism": "h. sapiens",
+        "organism": "H. sapiens",
         "pairs": {
             "D115test+3435Ttest": [
                 "D115test",

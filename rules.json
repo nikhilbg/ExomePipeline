@@ -6,7 +6,7 @@
         "multiqc": ["initialqc","wgslow"],
         "oncotator": ["exomeseq-somatic"],
         "oncotator_strelka": ["exomeseq-somatic"],
-#        "mutsig": ["exomeseq-somatic"],
+        "mutsig": ["exomeseq-somatic"],
 #        "mutsig_strelka": ["exomeseq-somatic"],
         "mkdir_somatic": ["exomeseq-somatic"],
 #        "cnvkit_somatic": ["exomeseq-somatic"],
@@ -67,7 +67,8 @@
         "exomeseq-germline-recal": "all-exomeseq-germline-realign.rl",
         "initialqc": "all-initialqc.rl",
         "bam2recal": "all-bam2recal.rl",
-        "custom": "all-custom.rl"        
+        "custom": "all-custom.rl",
+	"rnaseq": "rnaseq.snakefile"        
         }
 
  }
