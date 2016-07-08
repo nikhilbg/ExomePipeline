@@ -10,6 +10,7 @@
 #        "mutsig_strelka": ["exomeseq-somatic"],
         "mkdir_somatic": ["exomeseq-somatic"],
 #        "cnvkit_somatic": ["exomeseq-somatic"],
+#        "delly_somatic": ["exomeseq-somatic"],
         "fastqc.trimmed": ["initialqc","wgslow"],
         "trimmomatic": ["initialqc","wgslow"],
         "samtools.flagstats": ["none"],

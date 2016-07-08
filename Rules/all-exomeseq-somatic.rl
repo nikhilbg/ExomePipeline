@@ -9,7 +9,6 @@ rule all_exomeseq_somatic:
             "mutect2",
             "cnvkit",
             "germline_snps.vcf",
-#            "cnvkit/somatic_cnvkit.heatmap",
 #            expand("cnvkit/{p}"[1]+".cnr",
 #            expand("cnvkit/{p}"[1]+".cns",
             "mutect2/merged_somatic.vcf",
