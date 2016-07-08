@@ -1,4 +1,4 @@
-rule database_germline:
+rule database_somatic:
     input: vcf="mutect2/merged_somatic.vcf",
            annotation="full_annot.txt.zip"
     output: dbase="variants.database",

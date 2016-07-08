@@ -5,21 +5,26 @@ rule all_exomeseq_somatic:
             expand("strelka/{p}"+".vcf",p=pairs),
             expand("mutect2/oncotator/{p}"+".maf",p=pairs),
             expand("strelka/oncotator/{p}"+".maf",p=pairs),
+            expand("mutect/oncotator/{p}"+".maf",p=pairs),
             "strelka",
             "mutect2",
             "cnvkit",
+            "mutect",
+            "delly",
             "germline_snps.vcf",
 #            expand("cnvkit/{p}"[1]+".cnr",
 #            expand("cnvkit/{p}"[1]+".cns",
             "mutect2/merged_somatic.vcf",
             "mutect2/merged_somatic_snpEff.vcf",
-            "mutect2/somatic_variants",
             "variants.bed",
             "full_annot.txt.zip",
-            "sample_network.bmp"
-#            "variants.database",
-#            "mutect2/oncotator/somatic_variants.maf",
-#            "mutect2/mutsigCV/somatic.sig_genes.txt"
-#            "strelka/oncotator/somatic_variants.maf",
-#            "strelka/mutsigCV/somatic.sig_genes.txt"            
+            "sample_network.bmp",
+            "variants.database",
+            "mutect2/oncotator/mutect2_variants.maf",
+            "mutect2/mutsigCV/somatic.sig_genes.txt",
+            "strelka/oncotator/strelka_variants.maf",
+            "strelka/mutsigCV/somatic.sig_genes.txt",
+            "mutect/oncotator/mutect_variants.maf",
+            "mutect/mutsigCV/somatic.sig_genes.txt"
+
     output:
