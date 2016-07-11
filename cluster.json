@@ -15,6 +15,10 @@
     {
         "threads": "1"
     },
+    "fastq_screen":
+    {
+        "threads": "8"
+    },
     "strelka":
     {
         "threads": "4",

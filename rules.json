@@ -4,6 +4,7 @@
         "ngsqc": ["initialqc","wgslow"],
         "fastqc.fastq": ["initialqc","wgslow"],
         "bamstats": ["initialqc","wgslow"],
+        "fastq_screen": ["initialqc","wgslow"],
         "multiqc": ["initialqc","wgslow"],
         "oncotator": ["exomeseq-somatic"],
         "oncotator_strelka": ["exomeseq-somatic"],
