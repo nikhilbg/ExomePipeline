@@ -3,13 +3,13 @@
         "base":["gray"],
         "menu":["black","white"],
         "widget":["black","white"],
-        "text":["gray","black"],
+        "text":["blue","black"],
         "entry":["black","white"],
-        "project":["yellow","black"],
+        "project":["blue","white"],
         "status":["green","black"],
         "dryrun":["yellow","gray30"],
         "log":["green","gray30"],
         "errors":["orange","black"],
-        "comments":["cyan","black"]
+        "comments":["blue","white"]
     }
 }

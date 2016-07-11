@@ -97,6 +97,8 @@ def set_colors(*args):
     #baseColor="red4"
     #widgetBgColor="goldenrod"
 
+
+    
 set_colors()
 customRules=[]
 pipeline=["initialqc","bam2recal","wgslow","exomeseq-somatic","exomeseq-germline","exomeseq-germline-recal","exomeseq-germline-partial"]
@@ -129,6 +131,26 @@ newlines = ['\n', '\r\n', '\r']
 #Functions
 ###################
 
+def writeheader(*args):
+    if ftype.get()=="rg.tab":
+        comments.delete(1.0,END)
+        comments.insert(INSERT,"rgid\trgsm\trglb\trgpl\trgpu\trgcn\n")
+    if ftype.get()=="pairs":
+        comments.delete(1.0,END)
+        comments.insert(INSERT,"Sample1\tSample2\n")
+    return
+
+def writepaste():
+    try:
+        fname=workpath.get()+"/"+ftype.get()    
+        F=open(fname,"w")
+        F.write(comments.get('1.0',END))
+        F.close()
+        tkinter.messagebox.showinfo("Success","Wrote file "+fname)
+    except:
+        tkinter.messagebox.showinfo("Error","Did not write file "+fname+"\nIs working directory set?")
+    makejson()
+    return
 
 def load_configuration():
     fname = askopenfilename(filetypes=(("json files", "*.json"),
@@ -201,7 +223,7 @@ def load_project():
             eprojectid.set(PD['project']['id'])
             eorganism.set(PD['project']['organism'])
             technique.set(PD['project']['technique'])
-            comments.insert(INSERT, PD['project']['comments'])
+            description.insert(INSERT, PD['project']['description'])
             
             
 #            tkinter.messagebox.showinfo(fname,customRules)            
@@ -221,8 +243,12 @@ def set_data_directory():
     datapath.set(fname)                                    
 
 def save_project():
-    fname = asksaveasfilename(filetypes=(("json files", "*.json"),
-                                       ("All files", "*.*") ))
+    try:
+        fname = asksaveasfilename(filetypes=(("json files", "*.json"),("All files","*.*")),initialdir=workpath.get())
+    except:
+        tkinter.messagebox.showinfo("Error","Project not Saved\n Is the working directory set?")
+        return
+    
     if fname:
         P=eval(jsonconf.get("1.0",END))
  #       tkinter.messagebox.showinfo("Json",str(P))
@@ -402,10 +428,10 @@ def makejson(*args):
             smparams.append(parameters[i])
 
     
-    PD={'project':{'units':units,'samples':samples,'pairs':pairs,
+    PD={'project':{'pfamily':pfamily.get(),'units':units,'samples':samples,'pairs':pairs,
                    'id':eprojectid.get(),'pi':epi.get(),'organism':eorganism.get(),
                    'analyst':eanalyst.get(),'poc':epoc.get(),'pipeline':Pipeline.get(),'version':"1.0",
-                   'annotation':annotation.get(),'datapath':datapath.get(),'filetype':filetype.get(), 'binset':binset.get(),'username':euser.get(),'platform':eplatform.get(),'custom':customRules,'efiletype':efiletype.get(),'workpath':workpath.get(),'batchsize':batchsize,"smparams":smparams,"rgid":RG,"bysample":bysample.get(),"cluster":"cluster_medium.json","comments":comments.get('1.0',END),"technique":technique.get()}}
+                   'annotation':annotation.get(),'datapath':datapath.get(),'filetype':filetype.get(), 'binset':binset.get(),'username':euser.get(),'platform':eplatform.get(),'custom':customRules,'efiletype':efiletype.get(),'workpath':workpath.get(),'batchsize':batchsize,"smparams":smparams,"rgid":RG,"cluster":"cluster_medium.json","description":description.get('1.0',END),"technique":technique.get()}}
 
     
     J=json.dumps(PD, sort_keys = True, indent = 4, ensure_ascii=TRUE)
@@ -1130,22 +1156,31 @@ opts.pack(side=TOP,fill=X)
 
 nbook = ttk.Notebook(top)
 projframe = ttk.Frame(nbook)
-filesframe = ttk.Frame(nbook)
+#filesframe = ttk.Frame(nbook)
 editframe = ttk.Frame(nbook)
 opts2 = ttk.Frame(nbook)
-commentframe = ttk.Frame(nbook)
+pastewriteframe = ttk.Frame(nbook)
 runframe=ttk.Frame(nbook)
-manualframe=ttk.Frame(nbook)
+#manualframe=ttk.Frame(nbook)
 rnaseqframe=ttk.Frame(nbook)
+exomeseqframe=ttk.Frame(nbook)
+mirseqframe=ttk.Frame(nbook)
+chipseqframe=ttk.Frame(nbook)
+customframe=ttk.Frame(nbook)
 
 nbook.add(editframe, text='Project Information')
-nbook.add(opts2, text='Pipeline Options')
+nbook.add(opts2, text='Global Options')
 nbook.add(projframe, text='Project Json')
 nbook.add(runframe,text="Run Sequence")
-nbook.add(filesframe, text='Job Status')
-nbook.add(commentframe, text='Comments')
-nbook.add(manualframe,text="Manual")
+#nbook.add(filesframe, text='Job Status')
+nbook.add(pastewriteframe, text='Paste/Write Files')
+#nbook.add(manualframe,text="Manual")
 nbook.add(rnaseqframe,text="RNASeq Options")
+nbook.add(exomeseqframe,text="ExomeSeq Options")
+nbook.add(mirseqframe,text="MirSeq Options")
+nbook.add(chipseqframe,text="ChIPSeq Options")
+nbook.add(customframe,text="Custom Pipeline")
+
 nbook.pack( side = LEFT,fill=BOTH,padx=10,pady=10,expand=YES )
 
 # projframe = LabelFrame(top,text="Project Json",fg=textLightColor,bg=baseColor)
@@ -1160,64 +1195,64 @@ nbook.pack( side = LEFT,fill=BOTH,padx=10,pady=10,expand=YES )
 #The Manual
 #####################
 
-manquery=StringVar()
+# manquery=StringVar()
 
-E = Entry(manualframe, textvariable=manquery, fg=widgetFgColor,bg=widgetBgColor)
-E.pack(side=TOP,padx=10,pady=10)
+# E = Entry(manualframe, textvariable=manquery, fg=widgetFgColor,bg=widgetBgColor)
+# E.pack(side=TOP,padx=10,pady=10)
 
-manscrollbar = Scrollbar(manualframe)
-manscrollbar.pack( side = RIGHT,fill=BOTH,padx=10,pady=10,expand=YES )
+# manscrollbar = Scrollbar(manualframe)
+# manscrollbar.pack( side = RIGHT,fill=BOTH,padx=10,pady=10,expand=YES )
  
-mandisplay = Text(manualframe,width=80,height=38,bg=statusBgColor,fg=statusFgColor,font=("nimbus mono","9"),yscrollcommand = manscrollbar.set)
-manpage=open("pipeliner.manual","r").read()
-photo=PhotoImage(file='./pipeliner-logo.gif')
-mandisplay.insert(END,'\n')
-mandisplay.image_create(END, image=photo)
+# mandisplay = Text(manualframe,width=80,height=38,bg=statusBgColor,fg=statusFgColor,font=("nimbus mono","9"),yscrollcommand = manscrollbar.set)
+# manpage=open("pipeliner.manual","r").read()
+# photo=PhotoImage(file='./pipeliner-logo.gif')
+# mandisplay.insert(END,'\n')
+# mandisplay.image_create(END, image=photo)
  
-mandisplay.insert(INSERT, manpage)
+# mandisplay.insert(INSERT, manpage)
 
-mandisplay.insert(END, "link", ("a", "href"+"http://hpc.nih.gov"))
-mandisplay.mark_set("insert", "1.0")
-mandisplay.pack( side = LEFT,fill=BOTH,padx=10,pady=10,expand=YES )
-mandisplay.configure(state="disabled")
-manscrollbar['command']=mandisplay.yview
+# mandisplay.insert(END, "link", ("a", "href"+"http://hpc.nih.gov"))
+# mandisplay.mark_set("insert", "1.0")
+# mandisplay.pack( side = LEFT,fill=BOTH,padx=10,pady=10,expand=YES )
+# mandisplay.configure(state="disabled")
+# manscrollbar['command']=mandisplay.yview
 
 
-def searchmanual(*args):
-    global manquery
-    global mandisplay
-    query=manquery.get()
-    mandisplay.tag_delete("red")
-    mandisplay.tag_configure("red", foreground="#ff0000")
-    F="forwards" 
-    if F=="forwards":
-        start=mandisplay.index(INSERT)+"+1c"
-        end=mandisplay.index(END)
-        forwards=True
-        backwards=False
+# def searchmanual(*args):
+#     global manquery
+#     global mandisplay
+#     query=manquery.get()
+#     mandisplay.tag_delete("red")
+#     mandisplay.tag_configure("red", foreground="#ff0000")
+#     F="forwards" 
+#     if F=="forwards":
+#         start=mandisplay.index(INSERT)+"+1c"
+#         end=mandisplay.index(END)
+#         forwards=True
+#         backwards=False
 
-    else:
-        start=mandisplay.index(INSERT)+"-1c"
-        end="1.0"
-        forwards=False
-        backwards=True
+#     else:
+#         start=mandisplay.index(INSERT)+"-1c"
+#         end="1.0"
+#         forwards=False
+#         backwards=True
 
-    count=IntVar()
-#    tkinter.messagebox.showinfo("",start)
+#     count=IntVar()
+# #    tkinter.messagebox.showinfo("",start)
 
-    pos = mandisplay.search(query, start,stopindex=end,forwards=forwards,backwards=backwards,nocase=1,count=count)
-    if pos:
-        mandisplay.see(pos)
-        mandisplay.mark_set("insert", pos)
-        mandisplay.mark_set("matchStart", pos)
-        mandisplay.mark_set("matchEnd", "%s+%sc" % (pos, count.get()))
-        mandisplay.tag_add("red", "matchStart", "matchEnd")
-    return
+#     pos = mandisplay.search(query, start,stopindex=end,forwards=forwards,backwards=backwards,nocase=1,count=count)
+#     if pos:
+#         mandisplay.see(pos)
+#         mandisplay.mark_set("insert", pos)
+#         mandisplay.mark_set("matchStart", pos)
+#         mandisplay.mark_set("matchEnd", "%s+%sc" % (pos, count.get()))
+#         mandisplay.tag_add("red", "matchStart", "matchEnd")
+#     return
   
-manquery.trace('w',searchmanual)
+# manquery.trace('w',searchmanual)
  
-Bu = Button(manualframe, text="Next", fg=widgetFgColor,bg=widgetBgColor,command=searchmanual)
-Bu.pack(side=TOP,padx=5,pady=10)
+# Bu = Button(manualframe, text="Next", fg=widgetFgColor,bg=widgetBgColor,command=searchmanual)
+# Bu.pack(side=TOP,padx=5,pady=10)
 
 #backBu = Button(manualframe, text="back", fg=widgetFgColor,bg=widgetBgColor,command=lambda: searchmanual(F="backwards"))
 #backBu.pack(side=TOP,padx=5,pady=10)
@@ -1234,7 +1269,7 @@ L.grid(row=0,column=1,padx=10,pady=10,sticky="w")
 initLock=StringVar()
 initlock = Checkbutton(runframe, text="Unlock",variable=initLock,bg="red",fg="white",offvalue="locked",onvalue="unlocked",state="active")
 initLock.set("locked")
-initlock.grid(row=0,column=2,padx=10,pady=10,sticky="w")
+#initlock.grid(row=0,column=2,padx=10,pady=10,sticky="w")
 
 
 button = Button(runframe, text="Symbolically Link Data", fg=widgetFgColor,bg=widgetBgColor,command=lambda:symlink(datapath.get()))
@@ -1262,186 +1297,186 @@ L.grid(row=4,column=1,padx=10,pady=10,sticky="w")
 #The Files Pane
 #####################
 
-filescrollbar = Scrollbar(filesframe)
-filescrollbar.pack( side = RIGHT, fill=Y )
+# filescrollbar = Scrollbar(filesframe)
+# filescrollbar.pack( side = RIGHT, fill=Y )
 
-filedisplay = Text(filesframe,width=70,height=34,bg=statusBgColor,fg=statusFgColor,font=("nimbus mono","9"),yscrollcommand = filescrollbar.set)
-filedisplay.pack(side=RIGHT,expand=YES)
+# filedisplay = Text(filesframe,width=70,height=34,bg=statusBgColor,fg=statusFgColor,font=("nimbus mono","9"),yscrollcommand = filescrollbar.set)
+# filedisplay.pack(side=RIGHT,expand=YES)
 
-filescrollbar['command']=filedisplay.yview
+# filescrollbar['command']=filedisplay.yview
 
-errorbut = Button(filesframe, bd =2, width=12, bg="darkgreen",fg="white",text="No Errors",command=lambda: show(errorreport,"Errors",errorsFgColor,errorsBgColor,50,100))    
-errorbut.pack( side = BOTTOM,padx=5)
-
-
-def filestats():
-#def finderrors():
-    FNULL = open(os.devnull, 'w')
-    global errorreport
-    errorreport=""
-    cmd="grep 'Error' %s/Reports/snakemake.log %s/Reports/makeasnake.log"%(workpath.get(),workpath.get())
-    try:
-        p = Popen(cmd, stderr=FNULL,shell=True, stdin=PIPE, stdout=PIPE, close_fds=True)
-        Out = p.communicate()
-        out=Out[0].decode("utf-8")
-        errorreport=errorreport+out
-    except:
-        pass
-    if errorreport !="":
-        errorbut.config(bg="indianred",text="There are Errors",command=lambda:show(errorreport,"Errors",errorsFgColor,errorsBgColor,50,100))
-    else:
-        errorbut.config(bg="darkgreen",text="No Errors",command=lambda: donothing())
-#    threading.Timer(60, finderrors).start()
-    
-#def filestats():
-    report=""
-    total=1
-    auto_check=float(AC.get())
-#    tkinter.messagebox.showinfo("auto_check",str(auto_check))
-    cmd="date"
-    try:
-        p = Popen(cmd, shell=True, stdin=PIPE, stdout=PIPE, stderr=FNULL, close_fds=True)
-        Out = p.communicate()
-        out=Out[0].decode("utf-8")
-        report=report+"Pipeline: "+Pipeline.get()+"\n"+out
-    except:
-        pass
-
-    for FL in ['bam','sam','vcf','gvcf','fin.bam','recal.bam','realign.bam','dedup.bam','sorted.bam','pileup.bam','g.vcf']:
-        cmd="ls -l "+workpath.get()+"/*."+FL+"|awk '{print $5}'| paste -sd+ | bc -q"
-#        cmd="ls -l ../*."+FL 
-        try:
-            p = Popen(cmd, shell=True, stdin=PIPE, stdout=PIPE, stderr=FNULL,close_fds=True)
-            Out = p.communicate()
-            out=Out[0].decode("utf-8")
-        except:
-            pass
-        if str(out).find("No such file")>=0:    
-            out="0"
-        
-        cmd="ls -l "+workpath.get()+"/*."+FL+"|wc|awk '{print $1}'"
-        try:
-            p = Popen(cmd, shell=True, stdin=PIPE, stdout=PIPE, stderr=FNULL,close_fds=True)
-            Out = p.communicate()
-            out2=Out[0].decode("utf-8")
-
-        except:
-            pass
-
-        
-        report=report+FL+":\t"+out.strip()+"\tbytes in "+out2.strip()+" files\n"
-
-    cmd="du -s ../|cut -f1"
-    try:
-        p = Popen(cmd, shell=True, stdin=PIPE, stdout=PIPE, stderr=FNULL,close_fds=True)
-        Out = p.communicate()
-        total=float(Out[0].decode("utf-8"))
-#        tkinter.messagebox.showinfo("Disk",str(total))
-    except:
-        pass
+# errorbut = Button(filesframe, bd =2, width=12, bg="darkgreen",fg="white",text="No Errors",command=lambda: show(errorreport,"Errors",errorsFgColor,errorsBgColor,50,100))    
+# errorbut.pack( side = BOTTOM,padx=5)
 
 
-
-    color=["blue","blue","blue","blue","blue","blue","blue","blue","blue","green","orange","red","red","red"]
-    btn[1].config(text="Disk: {0:.2f}".format(total/10**6)+" G",fg="white",bg=color[int(math.log10(total))])
-#     if runmode==1:
-#         cmd="qstat|grep "+euser.get()
+# def filestats():
+# #def finderrors():
+#     FNULL = open(os.devnull, 'w')
+#     global errorreport
+#     errorreport=""
+#     cmd="grep 'Error' %s/Reports/snakemake.log %s/Reports/makeasnake.log"%(workpath.get(),workpath.get())
+#     try:
+#         p = Popen(cmd, stderr=FNULL,shell=True, stdin=PIPE, stdout=PIPE, close_fds=True)
+#         Out = p.communicate()
+#         out=Out[0].decode("utf-8")
+#         errorreport=errorreport+out
+#     except:
+#         pass
+#     if errorreport !="":
+#         errorbut.config(bg="indianred",text="There are Errors",command=lambda:show(errorreport,"Errors",errorsFgColor,errorsBgColor,50,100))
 #     else:
-#         cmd="sjobs|grep "+euser.get()
-#     
+#         errorbut.config(bg="darkgreen",text="No Errors",command=lambda: donothing())
+# #    threading.Timer(60, finderrors).start()
+    
+# #def filestats():
+#     report=""
+#     total=1
+#     auto_check=float(AC.get())
+# #    tkinter.messagebox.showinfo("auto_check",str(auto_check))
+#     cmd="date"
+#     try:
+#         p = Popen(cmd, shell=True, stdin=PIPE, stdout=PIPE, stderr=FNULL, close_fds=True)
+#         Out = p.communicate()
+#         out=Out[0].decode("utf-8")
+#         report=report+"Pipeline: "+Pipeline.get()+"\n"+out
+#     except:
+#         pass
+
+#     for FL in ['bam','sam','vcf','gvcf','fin.bam','recal.bam','realign.bam','dedup.bam','sorted.bam','pileup.bam','g.vcf']:
+#         cmd="ls -l "+workpath.get()+"/*."+FL+"|awk '{print $5}'| paste -sd+ | bc -q"
+# #        cmd="ls -l ../*."+FL 
+#         try:
+#             p = Popen(cmd, shell=True, stdin=PIPE, stdout=PIPE, stderr=FNULL,close_fds=True)
+#             Out = p.communicate()
+#             out=Out[0].decode("utf-8")
+#         except:
+#             pass
+#         if str(out).find("No such file")>=0:    
+#             out="0"
+        
+#         cmd="ls -l "+workpath.get()+"/*."+FL+"|wc|awk '{print $1}'"
+#         try:
+#             p = Popen(cmd, shell=True, stdin=PIPE, stdout=PIPE, stderr=FNULL,close_fds=True)
+#             Out = p.communicate()
+#             out2=Out[0].decode("utf-8")
+
+#         except:
+#             pass
+
+        
+#         report=report+FL+":\t"+out.strip()+"\tbytes in "+out2.strip()+" files\n"
+
+#     cmd="du -s ../|cut -f1"
+#     try:
+#         p = Popen(cmd, shell=True, stdin=PIPE, stdout=PIPE, stderr=FNULL,close_fds=True)
+#         Out = p.communicate()
+#         total=float(Out[0].decode("utf-8"))
+# #        tkinter.messagebox.showinfo("Disk",str(total))
+#     except:
+#         pass
+
+
+
+#     color=["blue","blue","blue","blue","blue","blue","blue","blue","blue","green","orange","red","red","red"]
+#     btn[1].config(text="Disk: {0:.2f}".format(total/10**6)+" G",fg="white",bg=color[int(math.log10(total))])
+# #     if runmode==1:
+# #         cmd="qstat|grep "+euser.get()
+# #     else:
+# #         cmd="sjobs|grep "+euser.get()
+# #     
+# #     try:
+# #         p = Popen(cmd, shell=True, stdin=PIPE, stdout=PIPE, stderr=STDOUT, close_fds=True)
+# #         Out = p.communicate()
+# #         out=Out[0].decode("utf-8")
+# #         report=report+"\n"+out
+# #     except Exception as e:
+# #         tkinter.messagebox.showinfo("Error",str(e))
+# # 
+
+# #    if runmode==1:
+# #        cmd="jobload "+euser.get()
+# #    else:
+#     cmd="jobload -u "+euser.get()
 #     try:
 #         p = Popen(cmd, shell=True, stdin=PIPE, stdout=PIPE, stderr=STDOUT, close_fds=True)
 #         Out = p.communicate()
 #         out=Out[0].decode("utf-8")
-#         report=report+"\n"+out
+#         try:
+#             pat=re.compile("User Load Avg:.+?(\d+\.\d+)%")
+#             jobload=float(pat.findall(out)[0])
+#             color=["black","cyan4","green4","green4","green4","green4","green4","orange4","orange4","orange4","red4"]
+#             btn[0].config(text="Load: "+str(jobload)+" %",fg="white",bg=color[int((jobload+9.9)/10)])
+#         except:
+#             jobload="No Load"
+#             btn[0].config(text=str(jobload),fg="white",bg="black")
+
+        
+#         report=report+out
 #     except Exception as e:
 #         tkinter.messagebox.showinfo("Error",str(e))
-# 
-
-#    if runmode==1:
-#        cmd="jobload "+euser.get()
-#    else:
-    cmd="jobload -u "+euser.get()
-    try:
-        p = Popen(cmd, shell=True, stdin=PIPE, stdout=PIPE, stderr=STDOUT, close_fds=True)
-        Out = p.communicate()
-        out=Out[0].decode("utf-8")
-        try:
-            pat=re.compile("User Load Avg:.+?(\d+\.\d+)%")
-            jobload=float(pat.findall(out)[0])
-            color=["black","cyan4","green4","green4","green4","green4","green4","orange4","orange4","orange4","red4"]
-            btn[0].config(text="Load: "+str(jobload)+" %",fg="white",bg=color[int((jobload+9.9)/10)])
-        except:
-            jobload="No Load"
-            btn[0].config(text=str(jobload),fg="white",bg="black")
-
         
-        report=report+out
-    except Exception as e:
-        tkinter.messagebox.showinfo("Error",str(e))
-        
-    filedisplay.delete("1.0",END)    
-    filedisplay.insert(INSERT, report)
-    F=open(workpath.get()+"/Reports/status.log","a")
-    F.write(report)
-    F.close()
-#    FNULL.close()
+#     filedisplay.delete("1.0",END)    
+#     filedisplay.insert(INSERT, report)
+#     F=open(workpath.get()+"/Reports/status.log","a")
+#     F.write(report)
+#     F.close()
+# #    FNULL.close()
 
-    cmd="grep ') done' %s/Reports/snakemake.log"%(workpath.get())
+#     cmd="grep ') done' %s/Reports/snakemake.log"%(workpath.get())
 
-    p = Popen(cmd, stderr=FNULL,shell=True, stdin=PIPE, stdout=PIPE, close_fds=True)
-    Out = p.communicate()
-    out=Out[0].decode("utf-8")
-#    tkinter.messagebox.showinfo("",out)        
-    try:
-        percent=out.split("\n")[-2]
-        percent_done.set(percent)
-    except:
-        pass
+#     p = Popen(cmd, stderr=FNULL,shell=True, stdin=PIPE, stdout=PIPE, close_fds=True)
+#     Out = p.communicate()
+#     out=Out[0].decode("utf-8")
+# #    tkinter.messagebox.showinfo("",out)        
+#     try:
+#         percent=out.split("\n")[-2]
+#         percent_done.set(percent)
+#     except:
+#         pass
     
-    if auto_check>=15:
-        threading.Timer(auto_check, filestats).start()         
+#     if auto_check>=15:
+#         threading.Timer(auto_check, filestats).start()         
 
-def status_auto_check_on():
-    AC.set("60")
-    #auto_check=1
-    filestats()
-    #btn[9].config(bg="red",text="Auto Check ON")
+# def status_auto_check_on():
+#     AC.set("60")
+#     #auto_check=1
+#     filestats()
+#     #btn[9].config(bg="red",text="Auto Check ON")
     
     
-def status_auto_check_off():
-    #btn[9].config(bg="black",fg="white",text="Auto Check OFF")
-    #global auto_check
-    AC.set("0")
+# def status_auto_check_off():
+#     #btn[9].config(bg="black",fg="white",text="Auto Check OFF")
+#     #global auto_check
+#     AC.set("0")
 
-percent_done=StringVar()
-percent_done.set("0% done")
-Entry(filesframe,textvariable=percent_done,width=15,relief=RAISED).pack(padx=5,side=TOP)
+# percent_done=StringVar()
+# percent_done.set("0% done")
+# Entry(filesframe,textvariable=percent_done,width=15,relief=RAISED).pack(padx=5,side=TOP)
 
-#filestats()
-button = Button(filesframe, text="Update Now", width=12, fg=widgetFgColor,bg=widgetBgColor,command=filestats)
-button.pack( side = BOTTOM,padx=5)
+# #filestats()
+# button = Button(filesframe, text="Update Now", width=12, fg=widgetFgColor,bg=widgetBgColor,command=filestats)
+# button.pack( side = BOTTOM,padx=5)
 
-btn=[0 for x in range(9)]
-for i in range(9):
-    btn[i] = Label(filesframe, bd =2, width=15, bg=baseColor,text="")    
-    #btn[i] = Button(filesframe, text="", fg="gray80",bg="gray80")
-    btn[i].pack( side = BOTTOM,padx=5)
+# btn=[0 for x in range(9)]
+# for i in range(9):
+#     btn[i] = Label(filesframe, bd =2, width=15, bg=baseColor,text="")    
+#     #btn[i] = Button(filesframe, text="", fg="gray80",bg="gray80")
+#     btn[i].pack( side = BOTTOM,padx=5)
 
-AC=StringVar()
+# AC=StringVar()
 
 
-label=Label(filesframe,text="Auto Update",fg=widgetFgColor,bg=widgetBgColor)
-label.pack(side=TOP,pady=5,padx=5,anchor=W)
+# label=Label(filesframe,text="Auto Update",fg=widgetFgColor,bg=widgetBgColor)
+# label.pack(side=TOP,pady=5,padx=5,anchor=W)
 
-Radiobutton(filesframe, text="Auto On", bg=widgetBgColor, fg=widgetFgColor,variable=AC, value=60,command=lambda: status_auto_check_on()).pack(side=TOP,anchor=W,pady=2,padx=5)
-Radiobutton(filesframe, text="Auto Off", bg=widgetBgColor, fg=widgetFgColor, variable=AC, value=0,command=lambda: status_auto_check_off()).pack(side=TOP,anchor=W,pady=5,padx=5)
+# Radiobutton(filesframe, text="Auto On", bg=widgetBgColor, fg=widgetFgColor,variable=AC, value=60,command=lambda: status_auto_check_on()).pack(side=TOP,anchor=W,pady=2,padx=5)
+# Radiobutton(filesframe, text="Auto Off", bg=widgetBgColor, fg=widgetFgColor, variable=AC, value=0,command=lambda: status_auto_check_off()).pack(side=TOP,anchor=W,pady=5,padx=5)
 
-L=Label(filesframe,text="Update rate (secs)",anchor="ne",bg=widgetBgColor,fg=widgetFgColor)
-E = Entry(filesframe, bd =2, width=5,bg=entryBgColor,fg=entryFgColor,textvariable=AC)
-AC.set("0")
-L.pack(side=TOP,pady=5,padx=5)
-E.pack(side=TOP,pady=5,padx=5)
+# L=Label(filesframe,text="Update rate (secs)",anchor="ne",bg=widgetBgColor,fg=widgetFgColor)
+# E = Entry(filesframe, bd =2, width=5,bg=entryBgColor,fg=entryFgColor,textvariable=AC)
+# AC.set("0")
+# L.pack(side=TOP,pady=5,padx=5)
+# E.pack(side=TOP,pady=5,padx=5)
 
 
 
@@ -1464,8 +1499,26 @@ eplatform=StringVar()
 eplatform.set("Illumina")
 technique=StringVar()
 
-L=Label(editframe,text="Project Id",anchor="ne",bg=baseColor,fg=textLightColor)
-E = Entry(editframe, bd =2, width=20,bg=entryBgColor,fg=entryFgColor,textvariable=eprojectid)
+projpanel1 = LabelFrame(editframe,text="Project Information",fg=textLightColor,bg=baseColor)
+projpanel1.pack( side = LEFT,fill=BOTH,padx=10,pady=10,expand=YES )
+projpanel2 = LabelFrame(editframe,text="Project Description",fg=textLightColor,bg=baseColor)
+projpanel2.pack( side = LEFT,fill=BOTH,padx=10,pady=10,expand=YES )
+
+
+
+
+Dscrollbar = Scrollbar(projpanel2)
+Dscrollbar.grid(row=0,column=4,rowspan=40)
+description = Text(projpanel2,width=50,height=38,bg=commentBgColor,fg=commentFgColor,font=("nimbus mono bold","10"),yscrollcommand = Dscrollbar.set)
+Dscrollbar['command']=description.yview
+description.insert(INSERT, "Enter project Description and Notes here.")
+description.bind('<FocusOut>',lambda _:makejson())
+description.grid(row=2,column=3,sticky="e",padx=10,pady=10)
+
+
+
+L=Label(projpanel1,text="Project Id",anchor="ne",bg=baseColor,fg=textLightColor)
+E = Entry(projpanel1, bd =2, width=20,bg=entryBgColor,fg=entryFgColor,textvariable=eprojectid)
 #L.pack(pady=5,padx=5)
 #E.pack(pady=1,padx=5)
 L.grid(row=0,column=0,sticky=W,padx=10,pady=10)
@@ -1473,8 +1526,8 @@ E.grid(row=0,column=2,sticky=W,padx=10,pady=10)
 
 eprojectid.trace('w', makejson)
 
-L=Label(editframe,text="Biowulf Username",anchor="ne",bg=baseColor,fg=textLightColor)
-E = Entry(editframe, bd =2, width=20, bg=entryBgColor, fg=entryFgColor,textvariable=euser)
+L=Label(projpanel1,text="Biowulf Username",anchor="ne",bg=baseColor,fg=textLightColor)
+E = Entry(projpanel1, bd =2, width=20, bg=entryBgColor, fg=entryFgColor,textvariable=euser)
 #L.pack(pady=5,padx=5)
 #E.pack(pady=1,padx=5)
 L.grid(row=1,column=0,sticky=W,padx=10,pady=10)
@@ -1482,16 +1535,16 @@ E.grid(row=1,column=2,sticky=W,padx=10,pady=10)
 
 euser.trace('w', makejson)
 
-L=Label(editframe,text="Organism",anchor="ne",bg=baseColor,fg=textLightColor)
-E = Entry(editframe, bd =2, width=20, bg=entryBgColor, fg=entryFgColor,textvariable=eorganism)
+L=Label(projpanel1,text="Organism",anchor="ne",bg=baseColor,fg=textLightColor)
+E = Entry(projpanel1, bd =2, width=20, bg=entryBgColor, fg=entryFgColor,textvariable=eorganism)
 #L.pack(pady=5,padx=5)
 #E.pack(pady=1,padx=5)
 L.grid(row=2,column=0,sticky=W,padx=10,pady=10)
 E.grid(row=2,column=2,sticky=W,padx=10,pady=10)
 eorganism.trace('w', makejson)
 
-L=Label(editframe,text="Analyst",anchor="ne",bg=baseColor,fg=textLightColor)
-E = Entry(editframe, bd =2, width=20, bg=entryBgColor, fg=entryFgColor,textvariable=eanalyst)
+L=Label(projpanel1,text="Analyst",anchor="ne",bg=baseColor,fg=textLightColor)
+E = Entry(projpanel1, bd =2, width=20, bg=entryBgColor, fg=entryFgColor,textvariable=eanalyst)
 #L.pack(pady=5,padx=5)
 #E.pack(pady=1,padx=5)
 L.grid(row=3,column=0,sticky=W,padx=10,pady=10)
@@ -1499,16 +1552,16 @@ E.grid(row=3,column=2,sticky=W,padx=10,pady=10)
 
 eanalyst.trace('w', makejson)
 
-L=Label(editframe,text="Point of Contact",anchor="ne",bg=baseColor,fg=textLightColor)
-E = Entry(editframe, bd =2, width=20, bg=entryBgColor, fg=entryFgColor,textvariable=epoc)
+L=Label(projpanel1,text="Point of Contact",anchor="ne",bg=baseColor,fg=textLightColor)
+E = Entry(projpanel1, bd =2, width=20, bg=entryBgColor, fg=entryFgColor,textvariable=epoc)
 #L.pack(pady=5,padx=5)
 #E.pack(pady=1,padx=5)
 L.grid(row=4,column=0,sticky=W,padx=10,pady=10)
 E.grid(row=4,column=2,sticky=W,padx=10,pady=10)
 epoc.trace('w', makejson)
 
-L=Label(editframe,text="PI",anchor="ne",bg=baseColor,fg=textLightColor)
-E = Entry(editframe, bd =2, width=20, bg=entryBgColor, fg=entryFgColor,textvariable=epi)
+L=Label(projpanel1,text="PI",anchor="ne",bg=baseColor,fg=textLightColor)
+E = Entry(projpanel1, bd =2, width=20, bg=entryBgColor, fg=entryFgColor,textvariable=epi)
 #L.pack(pady=5,padx=5)
 #E.pack(pady=1,padx=5)
 L.grid(row=5,column=0,sticky=W,padx=10,pady=10)
@@ -1516,16 +1569,16 @@ E.grid(row=5,column=2,sticky=W,padx=10,pady=10)
 epi.trace('w', makejson)
 
 
-L=Label(editframe,text="Platform",anchor="ne",bg=baseColor,fg=textLightColor)
-E = Entry(editframe, bd =2, width=20, bg=entryBgColor, fg=entryFgColor,textvariable=eplatform)
+L=Label(projpanel1,text="Platform",anchor="ne",bg=baseColor,fg=textLightColor)
+E = Entry(projpanel1, bd =2, width=20, bg=entryBgColor, fg=entryFgColor,textvariable=eplatform)
 #L.pack(pady=5,padx=5)
 #E.pack(pady=1,padx=5)
 L.grid(row=5,column=0,sticky=W,padx=10,pady=10)
 E.grid(row=5,column=2,sticky=W,padx=10,pady=10)
 eplatform.trace('w', makejson)
 
-L=Label(editframe,text="Technique",anchor="ne",bg=baseColor,fg=textLightColor)
-E = Entry(editframe, bd =2, width=20, bg=entryBgColor, fg=entryFgColor,textvariable=technique)
+L=Label(projpanel1,text="Technique",anchor="ne",bg=baseColor,fg=textLightColor)
+E = Entry(projpanel1, bd =2, width=20, bg=entryBgColor, fg=entryFgColor,textvariable=technique)
 #L.pack(pady=5,padx=5)
 #E.pack(pady=1,padx=5)
 L.grid(row=6,column=0,sticky=W,padx=10,pady=10)
@@ -1533,34 +1586,48 @@ E.grid(row=6,column=2,sticky=W,padx=10,pady=10)
 technique.trace('w', makejson)
 
 
-logo = Canvas(editframe)
-logo.config(width=200,height=300)
-img = PhotoImage(file="pipeliner-logo.gif")
-logo.create_image(0,0,image=img, anchor="nw")
-logo.image=img
-logo.grid(row=0,column=3)
+#logo = Canvas(editframe)
+#logo.config(width=200,height=300)
+#img = PhotoImage(file="pipeliner-logo.gif")
+#logo.create_image(0,0,image=img, anchor="nw")
+#logo.image=img
+#logo.grid(row=0,column=3)
 
 
 
-
-Commentscrollbar = Scrollbar(commentframe)
+Commentscrollbar = Scrollbar(pastewriteframe)
 Commentscrollbar.grid(row=0,column=4,rowspan=30)
-comments = Text(commentframe,width=80,height=30,bg=commentBgColor,fg=commentFgColor,font=("nimbus mono","11"),yscrollcommand = Commentscrollbar.set)
+comments = Text(pastewriteframe,width=80,height=30,bg=commentBgColor,fg=commentFgColor,font=("nimbus mono bold","11"),yscrollcommand = Commentscrollbar.set)
 Commentscrollbar['command']=comments.yview
-comments.insert(INSERT, "Enter comments here.")
-comments.bind('<FocusOut>',lambda _:makejson())
-comments.grid(row=2,column=3,sticky="e",padx=10,pady=10)
+comments.insert(INSERT, "Enter data here.  Then save in one of the standard formates listed.")
+#comments.bind('<FocusOut>',lambda _:writepaste())
+comments.grid(row=1,column=0,sticky="e")
+
+L=Label(pastewriteframe, text="File Type",fg=textLightColor,bg=baseColor)
+L.grid(row=11,column=1)
+
+ftypes=['pairs','rg.tab','contrasts.tab']
+ftype = StringVar()
+ftype.set(ftypes[0])
+om = OptionMenu(pastewriteframe, ftype, *ftypes, command=writeheader)
+om.config(bg = widgetBgColor,fg=widgetFgColor)
+om["menu"].config(bg = widgetBgColor,fg=widgetFgColor)
+#om.pack(side=LEFT,padx=20,pady=5)
+om.grid(row=11,column=2,sticky="e",padx=10,pady=10)
+
+but1 = Button(pastewriteframe, text="Save", width=12, fg=widgetFgColor,bg=widgetBgColor,command=writepaste)
+but1.grid(row=11,column=3)
+
 
 Projscrollbar = Scrollbar(projframe)
 Projscrollbar.grid(row=2,column=4,rowspan=30 )
-jsonconf = Text(projframe,width=80,height=30,bg=projectBgColor,fg=projectFgColor,font=("nimbus mono","11"),yscrollcommand = Projscrollbar.set)
+jsonconf = Text(projframe,width=80,height=30,bg=projectBgColor,fg=projectFgColor,font=("nimbus mono bold","11"),yscrollcommand = Projscrollbar.set)
 Projscrollbar['command']=jsonconf.yview
 jsonconf.insert(INSERT, projectjson)
 #jsonconf.pack(side=RIGHT,expand=YES)
-jsonconf.grid(row=2,column=3,sticky="e",padx=10,pady=10)
+jsonconf.grid(row=3,column=0,sticky="e",padx=10,pady=10)
 #jsonconf.bind('<FocusOut>',lambda _:saveproject(jsonconf.get("1.0",END)))
 jsonconf.bind('<FocusOut>',lambda _:makejson())
-
 
 datapath=StringVar()
 workpath=StringVar()
@@ -1656,11 +1723,12 @@ filetypes=['fastq','fastq.gz','R1.trimmed.fastq.gz','fastq.bz2','trimmed.fastq.b
 filetype = StringVar()
 filetype.set(filetypes[1])
 
-label=Label(opts2,text="Initial File Type",fg=textLightColor,bg=baseColor)
+
+label=Label(customframe,text="Initial File Type",fg=textLightColor,bg=baseColor)
 #label.pack(side=LEFT,padx=5)
 label.grid(row=0,column=0,sticky=W,padx=10,pady=10)
 
-om = OptionMenu(opts2, filetype, *filetypes, command=makejson)
+om = OptionMenu(customframe, filetype, *filetypes, command=makejson)
 om.config(bg = widgetBgColor,fg=widgetFgColor)
 om["menu"].config(bg = widgetBgColor,fg=widgetFgColor)
 #om.pack(side=LEFT,padx=20,pady=5)
@@ -1693,6 +1761,18 @@ om["menu"].config(bg = widgetBgColor,fg=widgetFgColor)
 #om.pack(side=LEFT,padx=20,pady=5)
 om.grid(row=2,column=1,sticky=W,padx=10,pady=10)
 
+L=Label(opts2, text="Pipeline Group",fg=textLightColor,bg=baseColor)
+L.grid(row=3,column=0)
+
+pfamilys=['exomeseq','rnaseq','mirseq','chipseq','custom']
+pfamily = StringVar()
+pfamily.set(pfamilys[0])
+om = OptionMenu(opts2, pfamily, *pfamilys, command=makejson)
+om.config(bg = widgetBgColor,fg=widgetFgColor)
+om["menu"].config(bg = widgetBgColor,fg=widgetFgColor)
+#om.pack(side=LEFT,padx=20,pady=5)
+om.grid(row=3,column=1,sticky=W,padx=10,pady=10)
+
 # label=Label(opts2,text="Resource Use",fg=textLightColor,bg=baseColor)
 # label.pack(side=LEFT,padx=5,pady=5)
 
@@ -1705,13 +1785,13 @@ om.grid(row=2,column=1,sticky=W,padx=10,pady=10)
 # om.pack(side=LEFT,padx=20,pady=5)
 # 
 
-label=Label(opts2,text="Pipeline",fg=textLightColor,bg=baseColor)
+label=Label(exomeseqframe,text="Pipeline",fg=textLightColor,bg=baseColor)
 #label.pack(side=LEFT,padx=5,pady=5)
 label.grid(row=3,column=0,sticky=W,padx=10,pady=10)
 
 Pipeline = StringVar()
 Pipeline.set(pipeline[0])
-om = OptionMenu(opts2, Pipeline, *pipeline, command=makejson)
+om = OptionMenu(exomeseqframe, Pipeline, *pipeline, command=makejson)
 om.config(bg = widgetBgColor,fg=widgetFgColor)
 om["menu"].config(bg = widgetBgColor,fg=widgetFgColor)
 #om.pack(side=LEFT,padx=20,pady=5)
@@ -1724,11 +1804,11 @@ efiletype.set(filetypes[0])
 
 
 
-label=Label(opts2,text="Final File Type",fg=textLightColor,bg=baseColor)
+label=Label(customframe,text="Final File Type",fg=textLightColor,bg=baseColor)
 #label.pack(side=LEFT,padx=5,pady=5)
 label.grid(row=4,column=0,sticky=W,padx=10,pady=10)
 
-om = OptionMenu(opts2, efiletype, *filetypes, command=makejson)
+om = OptionMenu(customframe, efiletype, *filetypes, command=makejson)
 om.config(bg = widgetBgColor,fg=widgetFgColor)
 om["menu"].config(bg = widgetBgColor,fg=widgetFgColor)
 #om.pack(side=LEFT,padx=20,pady=5)
@@ -1739,12 +1819,12 @@ om.grid(row=4,column=1,sticky=W,padx=10,pady=10)
 # freezeUnits.pack(side=LEFT,padx=5,pady=5)
 # freezeunits.set("no")
 # 
-bysample=StringVar()
-bySample = Checkbutton(opts2, text="bysample",variable=bysample,bg=baseColor,fg=textLightColor,offvalue="no",onvalue="yes")
-#bySample.pack(side=LEFT,padx=5,pady=5)
-bySample.grid(row=0,column=5,sticky=W,padx=10,pady=10)
-bysample.set("no")
-bysample.trace('w', makejson)
+# bysample=StringVar()
+# bySample = Checkbutton(opts2, text="bysample",variable=bysample,bg=baseColor,fg=textLightColor,offvalue="no",onvalue="yes")
+# #bySample.pack(side=LEFT,padx=5,pady=5)
+# bySample.grid(row=0,column=5,sticky=W,padx=10,pady=10)
+# bysample.set("no")
+# bysample.trace('w', makejson)
 
 makejson()
 top.mainloop()

@@ -1,95 +1,34 @@
 {
     "project": {
-        "analyst": "lackjb",
+        "analyst": "",
         "annotation": "hg19",
         "batchsize": "20",
         "binset": "standard-bin",
-        "bysample": "no",
         "cluster": "cluster_medium.json",
-        "comments": "Enter comments here.\n",
         "custom": [],
-        "datapath": "/data/CCBR/dev/Exome-seq-pipeline/somatic_test_June28",
+        "datapath": "",
+        "description": "Enter project Description and Notes here.\n",
         "efiletype": "fastq",
         "filetype": "fastq.gz",
-        "id": "test",
-        "organism": "h. sapiens",
+        "id": "",
+        "organism": "",
         "pairs": {
-            "D115test+3435Ttest": [
-                "D115test",
-                "3435Ttest"
-            ],
-            "D115testA+3435TtestA": [
-                "D115testA",
-                "3435TtestA"
-            ],
-            "D115testB+3435TtestB": [
-                "D115testB",
-                "3435TtestB"
-            ]
+            "na": "na"
         },
+        "pfamily": "mirseq",
         "pi": "",
-        "pipeline": "exomeseq-somatic",
+        "pipeline": "initialqc",
         "platform": "Illumina",
-        "poc": "lackjb",
-        "rgid": {
-            "3435Ttest": {
-                "rgcn": "na",
-                "rglb": "na",
-                "rgpl": "ILLUMINA",
-                "rgpu": "na",
-                "rgsm": "3435Ttest"
-            },
-            "3435TtestA": {
-                "rgcn": "na",
-                "rglb": "na",
-                "rgpl": "ILLUMINA",
-                "rgpu": "na",
-                "rgsm": "3435TtestA"
-            },
-            "3435TtestB": {
-                "rgcn": "na",
-                "rglb": "na",
-                "rgpl": "ILLUMINA",
-                "rgpu": "na",
-                "rgsm": "3435TtestB"
-            },
-            "D115test": {
-                "rgcn": "na",
-                "rglb": "na",
-                "rgpl": "ILLUMINA",
-                "rgpu": "na",
-                "rgsm": "D115test"
-            },
-            "D115testA": {
-                "rgcn": "na",
-                "rglb": "na",
-                "rgpl": "ILLUMINA",
-                "rgpu": "na",
-                "rgsm": "D115testA"
-            },
-            "D115testB": {
-                "rgcn": "na",
-                "rglb": "na",
-                "rgpl": "ILLUMINA",
-                "rgpu": "na",
-                "rgsm": "D115testB"
-            }
-        },
+        "poc": "",
+        "rgid": {},
         "samples": {
             "na": "na"
         },
         "smparams": [],
-        "technique": "paired",
-        "units": {
-            "3435Ttest": "3435Ttest",
-            "3435TtestA": "3435TtestA",
-            "3435TtestB": "3435TtestB",
-            "D115test": "D115test",
-            "D115testA": "D115testA",
-            "D115testB": "D115testB"
-        },
-        "username": "lackjb",
+        "technique": "",
+        "units": {},
+        "username": "",
         "version": "1.0",
-        "workpath": "/data/CCBR/dev/Exome-seq-pipeline/somatic_test_June28"
+        "workpath": ""
     }
 }
