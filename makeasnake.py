@@ -8,6 +8,7 @@ whereiam=os.popen("pwd").read().strip()
 C=open("project.json","r")
 C=eval(C.read())
 pipeline=C['project']['pipeline']
+pfamily=C['project']['pfamily']
 WP=C['project']['workpath']
 
 # jobscripts for PBS and slurm

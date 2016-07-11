@@ -4,5 +4,3 @@ rule fastqc_fastq:
     params: fastqc=config['bin']['FASTQC'],adapters=config['references']['fastqc.adapters'],rname="pl:fastqc"
     threads: 8
     shell:  "{params.fastqc} -o QC -f fastq --threads {threads} --contaminants {params.adapters} {input}"
-
-

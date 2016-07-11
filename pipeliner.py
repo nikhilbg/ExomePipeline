@@ -426,11 +426,19 @@ def makejson(*args):
 
         if cp[i].var.get()=="1":
             smparams.append(parameters[i])
-
+    if pfamily.get()=="exomeseq":
+        pipeline_current=Pipeline.get()
+    if pfamily.get()=="rnaseq":
+        pipeline_current=rPipeline.get()
+    if pfamily.get()=="chipseq":
+        pipeline_current=cPipeline.get()
+    if pfamily.get()=="exomeseq":
+        pipeline_current=mPipeline.get()
+        
     
     PD={'project':{'pfamily':pfamily.get(),'units':units,'samples':samples,'pairs':pairs,
                    'id':eprojectid.get(),'pi':epi.get(),'organism':eorganism.get(),
-                   'analyst':eanalyst.get(),'poc':epoc.get(),'pipeline':Pipeline.get(),'version':"1.0",
+                   'analyst':eanalyst.get(),'poc':epoc.get(),'pipeline':pipeline_current,'version':"1.0",
                    'annotation':annotation.get(),'datapath':datapath.get(),'filetype':filetype.get(), 'binset':binset.get(),'username':euser.get(),'platform':eplatform.get(),'custom':customRules,'efiletype':efiletype.get(),'workpath':workpath.get(),'batchsize':batchsize,"smparams":smparams,"rgid":RG,"cluster":"cluster_medium.json","description":description.get('1.0',END),"technique":technique.get()}}
 
     
@@ -1655,7 +1663,7 @@ workpath.trace('w', makejson)
 # The RNASeq Pane
 #########################
 
-rframe = LabelFrame(rnaseqframe,text="Star",fg=textLightColor,bg=baseColor)
+rframe = LabelFrame(rnaseqframe,text="Pipeline",fg=textLightColor,bg=baseColor)
 rframe.pack( side = TOP,fill=X,padx=10,pady=10,expand=YES )
 # 
 r2frame = LabelFrame(rnaseqframe,text="DEseq2",fg=textLightColor, bg=baseColor)
@@ -1669,10 +1677,10 @@ r4frame.pack( side = BOTTOM,fill=X,padx=10,pady=10,expand=YES )
 
 
 
-rnaseqopt1s=['hg19','mm10']
-rnaseqopt1 = StringVar()
-rnaseqopt1.set(rnaseqopt1s[0])
-om = OptionMenu(rframe, rnaseqopt1, *rnaseqopt1s, command=makejson)
+rPipelines=['rnaseq','rnaseq2']
+rPipeline = StringVar()
+rPipeline.set(rPipelines[0])
+om = OptionMenu(rframe, rPipeline, *rPipelines, command=makejson)
 om.config(bg = widgetBgColor,fg=widgetFgColor)
 om["menu"].config(bg = widgetBgColor,fg=widgetFgColor)
 #om.pack(side=LEFT,padx=20,pady=5)
@@ -1711,6 +1719,37 @@ rnaseqcheckb1 = Checkbutton(r4frame, text="check1",variable=rnaseqcheck1,bg=base
 rnaseqcheckb1.grid(row=0,column=5,sticky=W,padx=10,pady=10)
 rnaseqcheck1.set("no")
 rnaseqcheck1.trace('w', makejson)
+
+
+#########################
+#Chipseq
+#########################
+
+cPipelines=['chipseq','chipseq2']
+cPipeline = StringVar()
+cPipeline.set(cPipelines[0])
+om = OptionMenu(chipseqframe, cPipeline, *cPipelines, command=makejson)
+om.config(bg = widgetBgColor,fg=widgetFgColor)
+om["menu"].config(bg = widgetBgColor,fg=widgetFgColor)
+#om.pack(side=LEFT,padx=20,pady=5)
+om.grid(row=2,column=1,sticky=W,padx=10,pady=10)
+
+
+#########################
+#Mirseq
+#########################
+
+mPipelines=['mirseq','mirseq2']
+mPipeline = StringVar()
+mPipeline.set(mPipelines[0])
+om = OptionMenu(mirseqframe, mPipeline, *mPipelines, command=makejson)
+om.config(bg = widgetBgColor,fg=widgetFgColor)
+om["menu"].config(bg = widgetBgColor,fg=widgetFgColor)
+#om.pack(side=LEFT,padx=20,pady=5
+om.grid(row=2,column=1,sticky=W,padx=10,pady=10)
+
+
+
 
 
 #########################

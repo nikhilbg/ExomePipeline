@@ -13,6 +13,6 @@ batches=abc[0:n]
 
 pairs=sorted(list(config['project']['pairs'].keys()))
 
-
+pfamily=config['project']['pfamily']
 
 
