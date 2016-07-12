@@ -2,7 +2,7 @@ rule gatk_variant_annotator:
      input: bam=lambda wildcards: config['project']['units'][wildcards.x]+".realign.bam",
             vcf=lambda wildcards: config['project']['units'][wildcards.x]+".g.vcf"
      output: "{x}.annot.g.vcf"
-     params: gatk=config['bin']['GATK'],genome=config['references']['GENOME'],snpsites=config['references']['SNPSITES'],rname="pl:varannot"
+     params: gatk=config['bin'][pfamily]['GATK'],genome=config['references'][pfamily]['GENOME'],snpsites=config['references'][pfamily]['SNPSITES'],rname="pl:varannot"
      shell: "{params.gatk} -T VariantAnnotator \
     -R {params.genome} \
     -I {input.bam} \

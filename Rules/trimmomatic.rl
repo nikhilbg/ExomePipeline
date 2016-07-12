@@ -5,8 +5,8 @@ rule trimmomatic:
             "{x}.R1.trimmed.unpair.fastq.gz",
             "{x}.R2.trimmed.fastq.gz",
             "{x}.R2.trimmed.unpair.fastq.gz"
-    params: trimmomatic=config['bin']['TRIMMOMATIC'],
-            adapterfile=config['references']['trimmomatic.adapters'],rname="pl:trimmomatic"
+    params: trimmomatic=config['bin'][pfamily]['TRIMMOMATIC'],
+            adapterfile=config['references'][pfamily]['trimmomatic.adapters'],rname="pl:trimmomatic"
     threads: 4
     shell:  """
             {params.trimmomatic} PE -threads {threads} -phred33 {input[0]} {input[1]} {output} ILLUMINACLIP:{params.adapterfile}:3:30:10 LEADING:10 TRAILING:10 SLIDINGWINDOW:4:20 MINLEN:20

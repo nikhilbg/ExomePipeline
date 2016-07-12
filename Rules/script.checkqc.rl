@@ -7,14 +7,14 @@ rule script_checkqc:
               hist = "{x}_PIChist.pdf",
               flag = "{x}.flagstat.txt",
               tbl="{x}.recal.tbl"
-      params: covcalc = config['bin']['COVCALC'],
-              covfreq = config['bin']['COVFREQ'],
-              gatk=config['bin']['GATK'],
-              genome=config['references']['GENOME'],
-              picard2=config['bin']['PICARD2'],
-              pichist=config['bin']['PICHIST'],
-              readdist = config['bin']['READDIST'],
-              refflat=config['references']['REFFLAT'],rname="pl:checkqc"
+      params: covcalc = config['bin'][pfamily]['COVCALC'],
+              covfreq = config['bin'][pfamily]['COVFREQ'],
+              gatk=config['bin'][pfamily]['GATK'],
+              genome=config['references'][pfamily]['GENOME'],
+              picard2=config['bin'][pfamily]['PICARD2'],
+              pichist=config['bin'][pfamily]['PICHIST'],
+              readdist = config['bin'][pfamily]['READDIST'],
+              refflat=config['references'][pfamily]['REFFLAT'],rname="pl:checkqc"
       shell:  "coverageBed -abam {input} -hist -b {params.refflat} > {output.cov}; \
               perl {params.covcalc} {output.cov} {output.stat}; \
               grep 'all' {output.cov} > {output.covall}; \

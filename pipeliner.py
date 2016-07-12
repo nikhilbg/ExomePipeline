@@ -130,6 +130,19 @@ newlines = ['\n', '\r\n', '\r']
 ####################
 #Functions
 ###################
+def pipelineget():
+    if pfamily.get()=="exomeseq":
+        pipeline_current=Pipeline.get()
+    if pfamily.get()=="rnaseq":
+        pipeline_current=rPipeline.get()
+    if pfamily.get()=="chipseq":
+        pipeline_current=cPipeline.get()
+    if pfamily.get()=="mirseq":
+        pipeline_current=mPipeline.get()
+    return(pipeline_current)    
+
+
+
 
 def writeheader(*args):
     if ftype.get()=="rg.tab":
@@ -273,22 +286,22 @@ def progress():
         rules2[i]=0
     
         
-    F=open("{0}/Reports/{1}.dot".format(workpath.get(),Pipeline.get()),"r").read()
+    F=open("{0}/Reports/{1}.dot".format(workpath.get(),pipelineget()),"r").read()
     for i in rules2.keys():
 
         F=re.sub(r'('+i+')(\".+?)\".+?\"',r'\1_pending\2"0.0 0.0 0.0"',F)
 #        F=re.sub(i,"",F)        
         
 
-    G=open("{0}/Reports/{1}-{2}.dot".format(workpath.get(),Pipeline.get(),"progress"),"w")
+    G=open("{0}/Reports/{1}-{2}.dot".format(workpath.get(),pipelineget(),"progress"),"w")
     G.write(F)
     G.close()
 
-    o=os.popen("cd {0}/Reports && dot -Tpng -o {0}/Reports/{1}-progress.png {0}/Reports/{1}-progress.dot;convert {0}/Reports/{1}-progress.png {0}/Reports/{1}-progress.gif".format(workpath.get(),Pipeline.get()))
+    o=os.popen("cd {0}/Reports && dot -Tpng -o {0}/Reports/{1}-progress.png {0}/Reports/{1}-progress.dot;convert {0}/Reports/{1}-progress.png {0}/Reports/{1}-progress.gif".format(workpath.get(),pipelineget()))
 
 #    tkinter.messagebox.showerror("o",o)
 
-    PL=Pipeline.get()
+    PL=pipelineget()
     gf=Toplevel()
 
     gf.title("CCBR Pipeliner: {0} Progress Graph".format(PL))
@@ -370,6 +383,18 @@ def makejson(*args):
     except:
         pairs={"na":"na"}   
 
+    D=dict()
+    try:
+        F=open(workpath.get()+"/contrasts.tab","r")
+        f=F.read().split('\n')
+        F.close()
+        D["rsamps"]=f[0].split()
+        D["rgroups"]=f[1].split()
+        D["rcontrasts"]=f[2].split()
+        contrasts=D
+    except:
+        contrasts={"rsamps":"na","rgroups":"na","rcontrasts":"na"}   
+        
    
     D=dict() 
     FT=filetype.get()
@@ -426,20 +451,12 @@ def makejson(*args):
 
         if cp[i].var.get()=="1":
             smparams.append(parameters[i])
-    if pfamily.get()=="exomeseq":
-        pipeline_current=Pipeline.get()
-    if pfamily.get()=="rnaseq":
-        pipeline_current=rPipeline.get()
-    if pfamily.get()=="chipseq":
-        pipeline_current=cPipeline.get()
-    if pfamily.get()=="exomeseq":
-        pipeline_current=mPipeline.get()
         
     
     PD={'project':{'pfamily':pfamily.get(),'units':units,'samples':samples,'pairs':pairs,
                    'id':eprojectid.get(),'pi':epi.get(),'organism':eorganism.get(),
-                   'analyst':eanalyst.get(),'poc':epoc.get(),'pipeline':pipeline_current,'version':"1.0",
-                   'annotation':annotation.get(),'datapath':datapath.get(),'filetype':filetype.get(), 'binset':binset.get(),'username':euser.get(),'platform':eplatform.get(),'custom':customRules,'efiletype':efiletype.get(),'workpath':workpath.get(),'batchsize':batchsize,"smparams":smparams,"rgid":RG,"cluster":"cluster_medium.json","description":description.get('1.0',END),"technique":technique.get()}}
+                   'analyst':eanalyst.get(),'poc':epoc.get(),'pipeline':pipelineget(),'version':"1.0",
+                   'annotation':annotation.get(),'datapath':datapath.get(),'filetype':filetype.get(), 'binset':binset.get(),'username':euser.get(),'platform':eplatform.get(),'custom':customRules,'efiletype':efiletype.get(),'workpath':workpath.get(),'batchsize':batchsize,"smparams":smparams,"rgid":RG,"cluster":"cluster_medium.json","description":description.get('1.0',END),"technique":technique.get(),"contrasts":contrasts}}
 
     
     J=json.dumps(PD, sort_keys = True, indent = 4, ensure_ascii=TRUE)
@@ -629,14 +646,14 @@ def saveproject(proj):
 
 
 def viewreport():
-    PL=Pipeline.get()
+    PL=pipelineget()
     try:
         webbrowser.open(workpath.get()+'/Reports/'+PL+'.html')
     except Exception as e:
         tkinter.messagebox.showinfo("View Report",str(e))
         
 def getworkflow():
-    PL=Pipeline.get()
+    PL=pipelineget()
     gf=Toplevel()
     #MkaS=os.popen("./makeasnake.py 2>&1 | tee -a "+workpath.get()+"/Reports/makeasnake.log").read()
 
@@ -661,7 +678,7 @@ def getworkflow():
 
 def cmd(smcommand):
     global img
-    PL=Pipeline.get()
+    PL=pipelineget()
 #    makejson()
     saveproject(jsonconf.get("1.0",END))
     MkaS=os.popen("./makeasnake.py 2>&1 | tee -a "+workpath.get()+"/Reports/makeasnake.log").read()
@@ -813,7 +830,7 @@ def seelog():
     
 def run():
     global snakemakeRun
-    PL=Pipeline.get()
+    PL=pipelineget()
     MkaS=os.popen("./makeasnake.py "+PL+" 2>&1 | tee -a makeasnake.log").read()
     tkinter.messagebox.showinfo("Run by Simple Script","Starting Snakemake Run "+PL+"\n")
     snakemakeRun=Popen("../run.sh")
@@ -823,7 +840,7 @@ def runqsub():
     global snakemakeRun
     global runmode
     runmode=1
-    PL=Pipeline.get()
+    PL=pipelineget()
     MkaS=os.popen("./makeasnake.py "+PL+" 2>&1 | tee -a "+workpath.get()+"/Reports/makeasnake.log").read()
     tkinter.messagebox.showinfo("Qsub","Starting Qsub Snakemake Run "+PL+"\n")
     #snakemakeRun=Popen("../qsub.sh")
@@ -834,7 +851,7 @@ def runslurm():
     global snakemakeRun
     global runmode
     runmode=2
-    PL=Pipeline.get()
+    PL=pipelineget()
     MkaS=os.popen("./makeasnake.py "+PL+" 2>&1 | tee -a "+workpath.get()+"/Reports/makeasnake.log").read()
     tkinter.messagebox.showinfo("Slurm","Starting Slurm Snakemake Run "+PL+"\n")
     #snakemakeRun=Popen("../qsub.sh")
@@ -1659,22 +1676,28 @@ workE.pack(side=LEFT,pady=5)
 workE.grid(row=6,column=1,sticky=W,padx=10,pady=10)
 workpath.trace('w', makejson)
 
+########################
+# The Exomeseq Pane
+########################
+
+eframe = LabelFrame(exomeseqframe,text="Pipeline",fg=textLightColor,bg=baseColor)
+eframe.pack( side = TOP,fill=X,padx=10,pady=10,expand=NO )
+
+Pipeline = StringVar()
+Pipeline.set(pipeline[0])
+om = OptionMenu(eframe, Pipeline, *pipeline, command=makejson)
+om.config(bg = widgetBgColor,fg=widgetFgColor)
+om["menu"].config(bg = widgetBgColor,fg=widgetFgColor)
+#om.pack(side=LEFT,padx=20,pady=5)
+om.grid(row=3,column=1,sticky=W,padx=10,pady=10)
+
+
 #########################
 # The RNASeq Pane
 #########################
 
 rframe = LabelFrame(rnaseqframe,text="Pipeline",fg=textLightColor,bg=baseColor)
-rframe.pack( side = TOP,fill=X,padx=10,pady=10,expand=YES )
-# 
-r2frame = LabelFrame(rnaseqframe,text="DEseq2",fg=textLightColor, bg=baseColor)
-r2frame.pack( side = TOP,fill=X,padx=10,pady=10,expand=YES )
-
-r3frame = LabelFrame(rnaseqframe,text="EdgeR",fg=textLightColor, bg=baseColor)
-r3frame.pack( side = BOTTOM,fill=X,padx=10,pady=10,expand=YES )
-
-r4frame = LabelFrame(rnaseqframe,text="LimmaVoom",fg=textLightColor, bg=baseColor)
-r4frame.pack( side = BOTTOM,fill=X,padx=10,pady=10,expand=YES )
-
+rframe.pack( side = TOP,fill=X,padx=10,pady=10,expand=NO)
 
 
 rPipelines=['rnaseq','rnaseq2']
@@ -1686,49 +1709,19 @@ om["menu"].config(bg = widgetBgColor,fg=widgetFgColor)
 #om.pack(side=LEFT,padx=20,pady=5)
 om.grid(row=2,column=1,sticky=W,padx=10,pady=10)
 
-rnaseqopt2s=['hg19','mm10']
-rnaseqopt2 = StringVar()
-rnaseqopt2.set(rnaseqopt2s[0])
-om = OptionMenu(r2frame, rnaseqopt2, *rnaseqopt2s, command=makejson)
-om.config(bg = widgetBgColor,fg=widgetFgColor)
-om["menu"].config(bg = widgetBgColor,fg=widgetFgColor)
-#om.pack(side=LEFT,padx=20,pady=5)
-om.grid(row=2,column=1,sticky=W,padx=10,pady=10)
-
-rnaseqopt3s=['hg19','mm10']
-rnaseqopt3 = StringVar()
-rnaseqopt3.set(rnaseqopt2s[0])
-om = OptionMenu(r3frame, rnaseqopt3, *rnaseqopt3s, command=makejson)
-om.config(bg = widgetBgColor,fg=widgetFgColor)
-om["menu"].config(bg = widgetBgColor,fg=widgetFgColor)
-#om.pack(side=LEFT,padx=20,pady=5)
-om.grid(row=2,column=1,sticky=W,padx=10,pady=10)
-
-rnaseqopt4s=['hg19','mm10']
-rnaseqopt4 = StringVar()
-rnaseqopt4.set(rnaseqopt4s[0])
-om = OptionMenu(r4frame, rnaseqopt4, *rnaseqopt4s, command=makejson)
-om.config(bg = widgetBgColor,fg=widgetFgColor)
-om["menu"].config(bg = widgetBgColor,fg=widgetFgColor)
-#om.pack(side=LEFT,padx=20,pady=5)
-om.grid(row=2,column=1,sticky=W,padx=10,pady=10)
-
-rnaseqcheck1=StringVar()
-rnaseqcheckb1 = Checkbutton(r4frame, text="check1",variable=rnaseqcheck1,bg=baseColor,fg=textLightColor,offvalue="no",onvalue="yes")
-#bySample.pack(side=LEFT,padx=5,pady=5)
-rnaseqcheckb1.grid(row=0,column=5,sticky=W,padx=10,pady=10)
-rnaseqcheck1.set("no")
-rnaseqcheck1.trace('w', makejson)
 
 
 #########################
-#Chipseq
+# The Chipseq Pane
 #########################
+
+cframe = LabelFrame(chipseqframe,text="Pipeline",fg=textLightColor,bg=baseColor)
+cframe.pack( side = TOP,fill=X,padx=10,pady=10,expand=NO)
 
 cPipelines=['chipseq','chipseq2']
 cPipeline = StringVar()
 cPipeline.set(cPipelines[0])
-om = OptionMenu(chipseqframe, cPipeline, *cPipelines, command=makejson)
+om = OptionMenu(cframe, cPipeline, *cPipelines, command=makejson)
 om.config(bg = widgetBgColor,fg=widgetFgColor)
 om["menu"].config(bg = widgetBgColor,fg=widgetFgColor)
 #om.pack(side=LEFT,padx=20,pady=5)
@@ -1736,13 +1729,15 @@ om.grid(row=2,column=1,sticky=W,padx=10,pady=10)
 
 
 #########################
-#Mirseq
+# The Mirseq Pane
 #########################
+mframe = LabelFrame(mirseqframe,text="Pipeline",fg=textLightColor,bg=baseColor)
+mframe.pack( side = TOP,fill=X,padx=10,pady=10,expand=NO)
 
 mPipelines=['mirseq','mirseq2']
 mPipeline = StringVar()
 mPipeline.set(mPipelines[0])
-om = OptionMenu(mirseqframe, mPipeline, *mPipelines, command=makejson)
+om = OptionMenu(mframe, mPipeline, *mPipelines, command=makejson)
 om.config(bg = widgetBgColor,fg=widgetFgColor)
 om["menu"].config(bg = widgetBgColor,fg=widgetFgColor)
 #om.pack(side=LEFT,padx=20,pady=5
@@ -1824,17 +1819,6 @@ om.grid(row=3,column=1,sticky=W,padx=10,pady=10)
 # om.pack(side=LEFT,padx=20,pady=5)
 # 
 
-label=Label(exomeseqframe,text="Pipeline",fg=textLightColor,bg=baseColor)
-#label.pack(side=LEFT,padx=5,pady=5)
-label.grid(row=3,column=0,sticky=W,padx=10,pady=10)
-
-Pipeline = StringVar()
-Pipeline.set(pipeline[0])
-om = OptionMenu(exomeseqframe, Pipeline, *pipeline, command=makejson)
-om.config(bg = widgetBgColor,fg=widgetFgColor)
-om["menu"].config(bg = widgetBgColor,fg=widgetFgColor)
-#om.pack(side=LEFT,padx=20,pady=5)
-om.grid(row=3,column=1,sticky=W,padx=10,pady=10)
 
 
 

@@ -2,7 +2,7 @@ rule gatk_merge_somatic_vcfs:
     input: expand("mutect2/{p}"+".FINAL.vcf",p=pairs)
     output: vcf="mutect2/merged_somatic.vcf",
 #            summary="mutect2/somatic_variants"
-    params: regions=config['references']['REFFLAT'],gres="lscratch:100",gatk=config['bin']['GATK'],genome=config['references']['GENOME'],snpsites=config['references']['SNPSITES'],rname="CombineVariants"
+    params: regions=config['references'][pfamily]['REFFLAT'],gres="lscratch:100",gatk=config['bin'][pfamily]['GATK'],genome=config['references'][pfamily]['GENOME'],snpsites=config['references'][pfamily]['SNPSITES'],rname="CombineVariants"
     run:
         fl=os.popen("ls mutect2/*.FINAL.vcf").read().split()
         var=" --variant "+" --variant ".join(fl)

@@ -4,11 +4,11 @@ rule novocraft_novoalign:
      output: bam = temp("{x}.bam"),
              qcal = "{x}.qcal"
      params: partition="norm", mem="16g", time="24:00:00",
-             adapter1=config['references']['ADAPTER1'],
-             adapter2=config['references']['ADAPTER2'],
-             novoindex=config['references']['NOVOINDEX'],
-             qcal=config['bin']['QCAL'],
-             sam=config['bin']['SAMTOOLS'],rname="pl:novoalign"
+             adapter1=config['references'][pfamily]['ADAPTER1'],
+             adapter2=config['references'][pfamily]['ADAPTER2'],
+             novoindex=config['references'][pfamily]['NOVOINDEX'],
+             qcal=config['bin'][pfamily]['QCAL'],
+             sam=config['bin'][pfamily]['SAMTOOLS'],rname="pl:novoalign"
 #     message: "Executing NovoAlign Rule."
      threads: 16
      version: "1.0"

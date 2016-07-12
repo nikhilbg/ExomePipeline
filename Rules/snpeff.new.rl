@@ -1,7 +1,7 @@
 rule snpeff:
 	input: "all.snp.vcf","all.indel.vcf"
         output: "all.snp.snpeff.vcf","all.indel.snpeff.vcf","stats_summary.snp.html","stats_summary.indel.html","all.snp.first.vcf","all.indel.first.vcf","all.snp.filter.vcf","all.indel.filter.vcf"
-        params: snpeff=config['bin']['SNPEFF'],genome=config['references']['SNPEFF_GENOME'],snpsift=config['bin']['SNPSIFT'],effconfig=config['references']['SNPEFF_CONFIG'],firstanno=config['bin']['FIRSTANNO'],filtersift=config['references']['FILTERSIFT'],hapmap=config['references']['HAPMAP_DBNSFP'], regulomeDB=config['references']['REGULOMEDB'],rname="pl:snpeff"
+        params: snpeff=config['bin'][pfamily]['SNPEFF'],genome=config['references'][pfamily]['SNPEFF_GENOME'],snpsift=config['bin'][pfamily]['SNPSIFT'],effconfig=config['references'][pfamily]['SNPEFF_CONFIG'],firstanno=config['bin'][pfamily]['FIRSTANNO'],filtersift=config['references'][pfamily]['FILTERSIFT'],hapmap=config['references'][pfamily]['HAPMAP_DBNSFP'], regulomeDB=config['references'][pfamily]['REGULOMEDB'],rname="pl:snpeff"
         run:
             for mode in ["snp","indel"]:
                 ifile="all.{}.vcf".format(mode)

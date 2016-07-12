@@ -1,7 +1,7 @@
 rule snpeff_dbnsfp:
 	input: 'all.snp.filter.vcf','all.indel.filter.vcf'
 	output: 'all.snp.dbnsfp.vcf','all.indel.dbnsfp.vcf'
-	params: genome=config['references']['SNPEFF_GENOME'], snpsift=config['bin']['SNPSIFT'], effconfig=config['references']['SNPEFF_CONFIG'],selectDB=config['references']['SELECTDB'], db29=config['references']['DB29'],rname="pl:snpeff"
+	params: genome=config['references'][pfamily]['SNPEFF_GENOME'], snpsift=config['bin'][pfamily]['SNPSIFT'], effconfig=config['references'][pfamily]['SNPEFF_CONFIG'],selectDB=config['references'][pfamily]['SELECTDB'], db29=config['references'][pfamily]['DB29'],rname="pl:snpeff"
         run:
           for mode in ["snp","indel"]:
               ifile="all.{}.filter.vcf".format(mode)

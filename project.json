@@ -5,14 +5,41 @@
         "batchsize": "20",
         "binset": "standard-bin",
         "cluster": "cluster_medium.json",
+        "contrasts": {
+            "rcontrasts": [
+                "a",
+                "b"
+            ],
+            "rgroups": [
+                "a",
+                "b",
+                "a",
+                "b"
+            ],
+            "rsamps": [
+                "s1",
+                "s2",
+                "s2",
+                "s4"
+            ]
+        },
         "custom": [],
-        "datapath": "/data/CCBR/projects/ccbr731/pipeline/fastq",
+        "datapath": "/data/CCBR/projects/ccbr774/pipeline/fastq",
         "description": "Enter project Description and Notes here.\n",
         "efiletype": "fastq",
         "filetype": "fastq.gz",
         "id": "",
         "organism": "",
-        "pairs": {},
+        "pairs": {
+            "Sample1+Sample2": [
+                "Sample1",
+                "Sample2"
+            ],
+            "samp3+samp4": [
+                "samp3",
+                "samp4"
+            ]
+        },
         "pfamily": "rnaseq",
         "pi": "",
         "pipeline": "rnaseq",

@@ -5,7 +5,7 @@ rule varscan:
                indel= "{x}.indel",
                snpvcf="{x}.snp.vcf",
                indelvcf="{x}.indel.vcf"
-       params: varscan=config['bin']['VARSCAN'],
+       params: varscan=config['bin'][pfamily]['VARSCAN'],
                snpvcf="{x}.snp",indelvcf="{x}.indel",rname="pl:varscan"
        shell:  "{params.varscan} somatic {input[0]} {input[1]} --output-snp {output.snp} --output-indel {output.indel} --tumor-purity 0.85 --strand-filter 1;{params.varscan} somatic {input[0]} {input[1]} --output-snp {params.snpvcf} --output-indel {params.indelvcf} --output-vcf 1 --tumor-purity 0.85 --strand-filter 1"
 
