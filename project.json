@@ -15,79 +15,77 @@
         "description": "Enter project Description and Notes here.Enter project Description and Notes here.\n\n",
         "efiletype": "fastq",
         "filetype": "fastq.gz",
-        "id": "CCBR714-mRNA",
+        "id": "CCBR714",
         "organism": "Human",
-        "pairs": {
-            "na": "na"
-        },
+        "pairs": {},
         "pfamily": "rnaseq",
         "pi": "",
         "pipeline": "rnaseq",
         "platform": "Illumina",
         "poc": "Yuquan Lin",
         "rgid": {
-            "shCTRL_rep1_S9_001": {
+            "shCTRL_rep1_S9_all": {
                 "rgcn": "na",
                 "rglb": "na",
                 "rgpl": "ILLUMINA",
                 "rgpu": "na",
-                "rgsm": "shCTRL_rep1_S9_001"
+                "rgsm": "shCTRL_rep1_S9_all"
             },
-            "shCTRL_rep2_S8_001": {
+            "shCTRL_rep2_S8_all": {
                 "rgcn": "na",
                 "rglb": "na",
                 "rgpl": "ILLUMINA",
                 "rgpu": "na",
-                "rgsm": "shCTRL_rep2_S8_001"
+                "rgsm": "shCTRL_rep2_S8_all"
             },
-            "shCTRL_rep3_S7_001": {
+            "shCTRL_rep3_S7_all": {
                 "rgcn": "na",
                 "rglb": "na",
                 "rgpl": "ILLUMINA",
                 "rgpu": "na",
-                "rgsm": "shCTRL_rep3_S7_001"
+                "rgsm": "shCTRL_rep3_S7_all"
             },
-            "shEZH2-c8_rep1_S3_001": {
+            "shEZH2-c8_rep1_S3_all": {
                 "rgcn": "na",
                 "rglb": "na",
                 "rgpl": "ILLUMINA",
                 "rgpu": "na",
-                "rgsm": "shEZH2-c8_rep1_S3_001"
+                "rgsm": "shEZH2-c8_rep1_S3_all"
             },
-            "shEZH2-c8_rep2_S2_001": {
+            "shEZH2-c8_rep2_S2_all": {
                 "rgcn": "na",
                 "rglb": "na",
                 "rgpl": "ILLUMINA",
                 "rgpu": "na",
-                "rgsm": "shEZH2-c8_rep2_S2_001"
+                "rgsm": "shEZH2-c8_rep2_S2_all"
             },
-            "shEZH2-c8_rep3_S1_001": {
+            "shEZH2-c8_rep3_S1_all": {
                 "rgcn": "na",
                 "rglb": "na",
                 "rgpl": "ILLUMINA",
                 "rgpu": "na",
-                "rgsm": "shEZH2-c8_rep3_S1_001"
+                "rgsm": "shEZH2-c8_rep3_S1_all"
             },
-            "shPRMT5-482_rep1_S6_001": {
+            "shPRMT5-482_rep1_S6_all": {
                 "rgcn": "na",
                 "rglb": "na",
                 "rgpl": "ILLUMINA",
                 "rgpu": "na",
-                "rgsm": "shPRMT5-482_rep1_S6_001"
+                "rgsm": "shPRMT5-482_rep1_S6_all"
             },
-            "shPRMT5-482_rep2_S5_001": {
+            "shPRMT5-482_rep2_S5_all": {
                 "rgcn": "na",
                 "rglb": "na",
                 "rgpl": "ILLUMINA",
                 "rgpu": "na",
-                "rgsm": "shPRMT5-482_rep2_S5_001"
+                "rgsm": "shPRMT5-482_rep2_S5_all"
             },
-            "shPRMT5-482_rep3_S4_001": {
+            "shPRMT5-482_rep3_S4_all": {
                 "rgcn": "na",
                 "rglb": "na",
                 "rgpl": "ILLUMINA",
                 "rgpu": "na",
-                "rgsm": "shPRMT5-482_rep3_S4_001"
+                "rgsm": "shPRMT5-482_rep3_S4_all"
             }
         },
         "samples": {
@@ -96,15 +94,15 @@
         "smparams": [],
         "technique": "RNAseq",
         "units": {
-            "shCTRL_rep1_S9_001": "shCTRL_rep1_S9_001",
-            "shCTRL_rep2_S8_001": "shCTRL_rep2_S8_001",
-            "shCTRL_rep3_S7_001": "shCTRL_rep3_S7_001",
-            "shEZH2-c8_rep1_S3_001": "shEZH2-c8_rep1_S3_001",
-            "shEZH2-c8_rep2_S2_001": "shEZH2-c8_rep2_S2_001",
-            "shEZH2-c8_rep3_S1_001": "shEZH2-c8_rep3_S1_001",
-            "shPRMT5-482_rep1_S6_001": "shPRMT5-482_rep1_S6_001",
-            "shPRMT5-482_rep2_S5_001": "shPRMT5-482_rep2_S5_001",
-            "shPRMT5-482_rep3_S4_001": "shPRMT5-482_rep3_S4_001"
+            "shCTRL_rep1_S9_all": "shCTRL_rep1_S9_all",
+            "shCTRL_rep2_S8_all": "shCTRL_rep2_S8_all",
+            "shCTRL_rep3_S7_all": "shCTRL_rep3_S7_all",
+            "shEZH2-c8_rep1_S3_all": "shEZH2-c8_rep1_S3_all",
+            "shEZH2-c8_rep2_S2_all": "shEZH2-c8_rep2_S2_all",
+            "shEZH2-c8_rep3_S1_all": "shEZH2-c8_rep3_S1_all",
+            "shPRMT5-482_rep1_S6_all": "shPRMT5-482_rep1_S6_all",
+            "shPRMT5-482_rep2_S5_all": "shPRMT5-482_rep2_S5_all",
+            "shPRMT5-482_rep3_S4_all": "shPRMT5-482_rep3_S4_all"
         },
         "username": "lobanovav",
         "version": "1.0",
