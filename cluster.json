@@ -205,5 +205,29 @@
     {
         "time": "6-00:00:00",
         "threads": "4"
+    },
+    "trimmomatic_pe":
+    {
+        "threads": "32",
+        "mem": "110g"
+    },
+    "fastqc":
+    {
+        "threads": "32",
+        "mem": "110g"
+    },
+    "star1p":
+    {
+        "threads": "32",
+        "mem": "110g"
+    },
+    "star2p":
+    {
+        "threads": "32",
+        "mem": "110g"
+    },
+    "rsem":
+    {
+        "threads": "16"
     }
 }

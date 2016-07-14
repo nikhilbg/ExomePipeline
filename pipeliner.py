@@ -151,6 +151,11 @@ def writeheader(*args):
     if ftype.get()=="pairs":
         comments.delete(1.0,END)
         comments.insert(INSERT,"Sample1\tSample2\n")
+    if ftype.get()=="contrasts.tab":
+        comments.delete(1.0,END)
+        t=list(PD['project']['units'].keys())
+        t.sort()
+        comments.insert(INSERT," ".join(t))
     return
 
 def writepaste():

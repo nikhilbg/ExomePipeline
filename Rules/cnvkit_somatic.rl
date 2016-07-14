@@ -1,5 +1,5 @@
 rule cnvkit_somatic:
-    input: lambda wildcards: list(config['project']['pairs'].values())[wildcards.group],
+    input: lambda wildcards: list(config['project']['pairs'].values())[wildcards.group]
     output: cnr="cnvkit/{group[1]}.cnr",
             cns="cnvkit/{group[1]}.cns",
 #            heatmap="cnvkit/{tumor}.somatic_cnvkit.heatmap"

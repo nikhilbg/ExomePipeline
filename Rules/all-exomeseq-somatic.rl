@@ -12,7 +12,7 @@ rule all_exomeseq_somatic:
             "mutect",
             "delly",
             "germline_snps.vcf",
-            expand("cnvkit/{p}"[1]+".cnr",
+#            expand("cnvkit/{p}"[1]+".cnr",
 #            expand("cnvkit/{p}"[1]+".cns",
 #            expand("delly/{p}"[1]+"del.bcf",
 #            expand("delly/{p}"[1]+"ins.bcf",

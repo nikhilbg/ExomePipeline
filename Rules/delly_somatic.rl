@@ -1,5 +1,5 @@
 rule delly_somatic:
-    input: lambda wildcards: list(config['project']['pairs'].values())[wildcards.group],
+    input: lambda wildcards: list(config['project']['pairs'].values())[wildcards.group]
     output: del="delly/{group[1]}.del.bcf",
             ins="delly/{group[1]}.ins.bcf",
             dup="delly/{group[1]}.dup.bcf",

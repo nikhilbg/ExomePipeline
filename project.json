@@ -1,109 +1,113 @@
 {
     "project": {
-        "analyst": "",
+        "analyst": "Alexei Lobanov",
         "annotation": "hg19",
         "batchsize": "20",
         "binset": "standard-bin",
         "cluster": "cluster_medium.json",
         "contrasts": {
-            "rcontrasts": [
-                "a",
-                "b"
-            ],
-            "rgroups": [
-                "a",
-                "b",
-                "a",
-                "b"
-            ],
-            "rsamps": [
-                "s1",
-                "s2",
-                "s2",
-                "s4"
-            ]
+            "rcontrasts": "na",
+            "rgroups": "na",
+            "rsamps": "na"
         },
         "custom": [],
-        "datapath": "/data/CCBR/projects/ccbr774/pipeline/fastq",
-        "description": "Enter project Description and Notes here.\n",
+        "datapath": "/gpfs/gsfs4/users/CCBR/user/Alexei/CCBR714/rearranged/mRNA-fastq",
+        "description": "Enter project Description and Notes here.Enter project Description and Notes here.\n\n",
         "efiletype": "fastq",
         "filetype": "fastq.gz",
-        "id": "",
-        "organism": "",
+        "id": "CCBR714-mRNA",
+        "organism": "Human",
         "pairs": {
-            "Sample1+Sample2": [
-                "Sample1",
-                "Sample2"
-            ],
-            "samp3+samp4": [
-                "samp3",
-                "samp4"
-            ]
+            "na": "na"
         },
         "pfamily": "rnaseq",
         "pi": "",
         "pipeline": "rnaseq",
         "platform": "Illumina",
-        "poc": "",
+        "poc": "Yuquan Lin",
         "rgid": {
-            "12284_N_S38_001": {
+            "shCTRL_rep1_S9_001": {
                 "rgcn": "na",
                 "rglb": "na",
                 "rgpl": "ILLUMINA",
                 "rgpu": "na",
-                "rgsm": "12284_N_S38_001"
+                "rgsm": "shCTRL_rep1_S9_001"
             },
-            "12284_T_S37_001": {
+            "shCTRL_rep2_S8_001": {
                 "rgcn": "na",
                 "rglb": "na",
                 "rgpl": "ILLUMINA",
                 "rgpu": "na",
-                "rgsm": "12284_T_S37_001"
+                "rgsm": "shCTRL_rep2_S8_001"
             },
-            "21238_N_S42_001": {
+            "shCTRL_rep3_S7_001": {
                 "rgcn": "na",
                 "rglb": "na",
                 "rgpl": "ILLUMINA",
                 "rgpu": "na",
-                "rgsm": "21238_N_S42_001"
+                "rgsm": "shCTRL_rep3_S7_001"
             },
-            "21238_T_S41_001": {
+            "shEZH2-c8_rep1_S3_001": {
                 "rgcn": "na",
                 "rglb": "na",
                 "rgpl": "ILLUMINA",
                 "rgpu": "na",
-                "rgsm": "21238_T_S41_001"
+                "rgsm": "shEZH2-c8_rep1_S3_001"
             },
-            "23709_N_S40_001": {
+            "shEZH2-c8_rep2_S2_001": {
                 "rgcn": "na",
                 "rglb": "na",
                 "rgpl": "ILLUMINA",
                 "rgpu": "na",
-                "rgsm": "23709_N_S40_001"
+                "rgsm": "shEZH2-c8_rep2_S2_001"
             },
-            "23709_T_S39_001": {
+            "shEZH2-c8_rep3_S1_001": {
                 "rgcn": "na",
                 "rglb": "na",
                 "rgpl": "ILLUMINA",
                 "rgpu": "na",
-                "rgsm": "23709_T_S39_001"
+                "rgsm": "shEZH2-c8_rep3_S1_001"
+            },
+            "shPRMT5-482_rep1_S6_001": {
+                "rgcn": "na",
+                "rglb": "na",
+                "rgpl": "ILLUMINA",
+                "rgpu": "na",
+                "rgsm": "shPRMT5-482_rep1_S6_001"
+            },
+            "shPRMT5-482_rep2_S5_001": {
+                "rgcn": "na",
+                "rglb": "na",
+                "rgpl": "ILLUMINA",
+                "rgpu": "na",
+                "rgsm": "shPRMT5-482_rep2_S5_001"
+            },
+            "shPRMT5-482_rep3_S4_001": {
+                "rgcn": "na",
+                "rglb": "na",
+                "rgpl": "ILLUMINA",
+                "rgpu": "na",
+                "rgsm": "shPRMT5-482_rep3_S4_001"
             }
         },
         "samples": {
             "na": "na"
         },
         "smparams": [],
-        "technique": "",
+        "technique": "RNAseq",
         "units": {
-            "12284_N_S38_001": "12284_N_S38_001",
-            "12284_T_S37_001": "12284_T_S37_001",
-            "21238_N_S42_001": "21238_N_S42_001",
-            "21238_T_S41_001": "21238_T_S41_001",
-            "23709_N_S40_001": "23709_N_S40_001",
-            "23709_T_S39_001": "23709_T_S39_001"
+            "shCTRL_rep1_S9_001": "shCTRL_rep1_S9_001",
+            "shCTRL_rep2_S8_001": "shCTRL_rep2_S8_001",
+            "shCTRL_rep3_S7_001": "shCTRL_rep3_S7_001",
+            "shEZH2-c8_rep1_S3_001": "shEZH2-c8_rep1_S3_001",
+            "shEZH2-c8_rep2_S2_001": "shEZH2-c8_rep2_S2_001",
+            "shEZH2-c8_rep3_S1_001": "shEZH2-c8_rep3_S1_001",
+            "shPRMT5-482_rep1_S6_001": "shPRMT5-482_rep1_S6_001",
+            "shPRMT5-482_rep2_S5_001": "shPRMT5-482_rep2_S5_001",
+            "shPRMT5-482_rep3_S4_001": "shPRMT5-482_rep3_S4_001"
         },
-        "username": "",
+        "username": "lobanovav",
         "version": "1.0",
-        "workpath": "/scratch/dwheeler/test"
+        "workpath": "/scratch/AlTest714"
     }
 }
