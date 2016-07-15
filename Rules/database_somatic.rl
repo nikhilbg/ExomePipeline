@@ -1,5 +1,5 @@
 rule database_somatic:
-    input: vcf="mutect2/merged_somatic.vcf",
+    input: vcf="mutect2_out/merged_somatic.vcf",
            annotation="full_annot.txt.zip"
     output: dbase="variants.database",
             vcf="exome_genotypes.vcf"
