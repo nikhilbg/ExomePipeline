@@ -1,6 +1,6 @@
 {
     "project": {
-        "analyst": "Alexei Lobanov",
+        "analyst": "lackjb",
         "annotation": "hg19",
         "batchsize": "20",
         "binset": "standard-bin",
@@ -11,106 +11,90 @@
             "rsamps": "na"
         },
         "custom": [],
-        "datapath": "/gpfs/gsfs4/users/CCBR/user/Alexei/CCBR714/rearranged/mRNA-fastq",
-        "description": "Enter project Description and Notes here.Enter project Description and Notes here.\n\n",
+        "datapath": "/data/CCBR/dev/Exome-seq-pipeline/somatic_test_June28",
+        "description": "Enter project Description and Notes here.\n",
         "efiletype": "fastq",
         "filetype": "fastq.gz",
-        "id": "CCBR714",
-        "organism": "Human",
+        "id": "test",
+        "organism": "H. sapiens",
         "pairs": {
-            "shCTRL_rep1_S9+shEZH2-c8_rep2_S2": [
-                "shCTRL_rep1_S9",
-                "shEZH2-c8_rep2_S2"
+            "D115test+3435Ttest": [
+                "D115test",
+                "3435Ttest"
+            ],
+            "D115testA+3435TtestA": [
+                "D115testA",
+                "3435TtestA"
+            ],
+            "D115testB+3435TtestB": [
+                "D115testB",
+                "3435TtestB"
             ]
         },
-        "pfamily": "rnaseq",
+        "pfamily": "exomeseq",
         "pi": "",
-        "pipeline": "rnaseq",
+        "pipeline": "exomeseq-somatic",
         "platform": "Illumina",
-        "poc": "Yuquan Lin",
+        "poc": "justin.lack",
         "rgid": {
-            "shCTRL_rep1_S9_all": {
+            "3435Ttest": {
                 "rgcn": "na",
                 "rglb": "na",
                 "rgpl": "ILLUMINA",
                 "rgpu": "na",
-                "rgsm": "shCTRL_rep1_S9_all"
+                "rgsm": "3435Ttest"
             },
-            "shCTRL_rep2_S8_all": {
+            "3435TtestA": {
                 "rgcn": "na",
                 "rglb": "na",
                 "rgpl": "ILLUMINA",
                 "rgpu": "na",
-                "rgsm": "shCTRL_rep2_S8_all"
+                "rgsm": "3435TtestA"
             },
-            "shCTRL_rep3_S7_all": {
+            "3435TtestB": {
                 "rgcn": "na",
                 "rglb": "na",
                 "rgpl": "ILLUMINA",
                 "rgpu": "na",
-                "rgsm": "shCTRL_rep3_S7_all"
+                "rgsm": "3435TtestB"
             },
-            "shEZH2-c8_rep1_S3_all": {
+            "D115test": {
                 "rgcn": "na",
                 "rglb": "na",
                 "rgpl": "ILLUMINA",
                 "rgpu": "na",
-                "rgsm": "shEZH2-c8_rep1_S3_all"
+                "rgsm": "D115test"
             },
-            "shEZH2-c8_rep2_S2_all": {
+            "D115testA": {
                 "rgcn": "na",
                 "rglb": "na",
                 "rgpl": "ILLUMINA",
                 "rgpu": "na",
-                "rgsm": "shEZH2-c8_rep2_S2_all"
+                "rgsm": "D115testA"
             },
-            "shEZH2-c8_rep3_S1_all": {
+            "D115testB": {
                 "rgcn": "na",
                 "rglb": "na",
                 "rgpl": "ILLUMINA",
                 "rgpu": "na",
-                "rgsm": "shEZH2-c8_rep3_S1_all"
-            },
-            "shPRMT5-482_rep1_S6_all": {
-                "rgcn": "na",
-                "rglb": "na",
-                "rgpl": "ILLUMINA",
-                "rgpu": "na",
-                "rgsm": "shPRMT5-482_rep1_S6_all"
-            },
-            "shPRMT5-482_rep2_S5_all": {
-                "rgcn": "na",
-                "rglb": "na",
-                "rgpl": "ILLUMINA",
-                "rgpu": "na",
-                "rgsm": "shPRMT5-482_rep2_S5_all"
-            },
-            "shPRMT5-482_rep3_S4_all": {
-                "rgcn": "na",
-                "rglb": "na",
-                "rgpl": "ILLUMINA",
-                "rgpu": "na",
-                "rgsm": "shPRMT5-482_rep3_S4_all"
+                "rgsm": "D115testB"
             }
         },
         "samples": {
             "na": "na"
         },
         "smparams": [],
-        "technique": "RNAseq",
+        "technique": "paired",
         "units": {
-            "shCTRL_rep1_S9_all": "shCTRL_rep1_S9_all",
-            "shCTRL_rep2_S8_all": "shCTRL_rep2_S8_all",
-            "shCTRL_rep3_S7_all": "shCTRL_rep3_S7_all",
-            "shEZH2-c8_rep1_S3_all": "shEZH2-c8_rep1_S3_all",
-            "shEZH2-c8_rep2_S2_all": "shEZH2-c8_rep2_S2_all",
-            "shEZH2-c8_rep3_S1_all": "shEZH2-c8_rep3_S1_all",
-            "shPRMT5-482_rep1_S6_all": "shPRMT5-482_rep1_S6_all",
-            "shPRMT5-482_rep2_S5_all": "shPRMT5-482_rep2_S5_all",
-            "shPRMT5-482_rep3_S4_all": "shPRMT5-482_rep3_S4_all"
+            "3435Ttest": "3435Ttest",
+            "3435TtestA": "3435TtestA",
+            "3435TtestB": "3435TtestB",
+            "D115test": "D115test",
+            "D115testA": "D115testA",
+            "D115testB": "D115testB"
         },
-        "username": "lobanovav",
+        "username": "lackjb",
         "version": "1.0",
-        "workpath": "/scratch/AlTest714"
+        "workpath": "/data/CCBR/dev/Exome-seq-pipeline/somatic_test_June28"
     }
 }
