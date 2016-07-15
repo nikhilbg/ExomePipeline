@@ -17,7 +17,12 @@
         "filetype": "fastq.gz",
         "id": "CCBR714",
         "organism": "Human",
-        "pairs": {},
+        "pairs": {
+            "shCTRL_rep1_S9+shEZH2-c8_rep2_S2": [
+                "shCTRL_rep1_S9",
+                "shEZH2-c8_rep2_S2"
+            ]
+        },
         "pfamily": "rnaseq",
         "pi": "",
         "pipeline": "rnaseq",
