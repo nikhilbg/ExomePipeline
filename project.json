@@ -1,100 +1,113 @@
 {
     "project": {
-        "analyst": "lackjb",
+        "analyst": "",
         "annotation": "hg19",
         "batchsize": "20",
         "binset": "standard-bin",
         "cluster": "cluster_medium.json",
         "contrasts": {
-            "rcontrasts": "na",
-            "rgroups": "na",
-            "rsamps": "na"
+            "rcontrasts": [
+                "N",
+                "T"
+            ],
+            "rgroups": [
+                "N",
+                "T",
+                "N",
+                "T",
+                "N",
+                "T"
+            ],
+            "rsamps": [
+                "12284_N_S38",
+                "12284_T_S37",
+                "21238_N_S42",
+                "21238_T_S41",
+                "23709_N_S40",
+                "23709_T_S39"
+            ]
         },
         "custom": [],
-        "datapath": "/data/CCBR/dev/Exome-seq-pipeline/somatic_test_June28",
-        "description": "Enter project Description and Notes here.\n",
+        "datapath": "/data/CCBR/projects/ccbr774/pipeline/fastq",
+        "description": "Enter project Description and Notes here.Enter project Description and Notes here.\n\n",
         "efiletype": "fastq",
         "filetype": "fastq.gz",
-        "id": "test",
-        "organism": "H. sapiens",
+        "id": "",
+        "organism": "",
         "pairs": {
-            "D115test+3435Ttest": [
-                "D115test",
-                "3435Ttest"
+            "Sample1+Sample2": [
+                "Sample1",
+                "Sample2"
             ],
-            "D115testA+3435TtestA": [
-                "D115testA",
-                "3435TtestA"
-            ],
-            "D115testB+3435TtestB": [
-                "D115testB",
-                "3435TtestB"
+            "samp3+samp4": [
+                "samp3",
+                "samp4"
             ]
         },
         "pfamily": "exomeseq",
         "pi": "",
-        "pipeline": "exomeseq-somatic",
+        "pipeline": "initialqc",
         "platform": "Illumina",
-        "poc": "justin.lack",
+        "poc": "",
         "rgid": {
-            "3435Ttest": {
+            "12284_N_S38": {
                 "rgcn": "na",
                 "rglb": "na",
                 "rgpl": "ILLUMINA",
                 "rgpu": "na",
-                "rgsm": "3435Ttest"
+                "rgsm": "12284_N_S38"
             },
-            "3435TtestA": {
+            "12284_T_S37": {
                 "rgcn": "na",
                 "rglb": "na",
                 "rgpl": "ILLUMINA",
                 "rgpu": "na",
-                "rgsm": "3435TtestA"
+                "rgsm": "12284_T_S37"
             },
-            "3435TtestB": {
+            "21238_N_S42": {
                 "rgcn": "na",
                 "rglb": "na",
                 "rgpl": "ILLUMINA",
                 "rgpu": "na",
-                "rgsm": "3435TtestB"
+                "rgsm": "21238_N_S42"
             },
-            "D115test": {
+            "21238_T_S41": {
                 "rgcn": "na",
                 "rglb": "na",
                 "rgpl": "ILLUMINA",
                 "rgpu": "na",
-                "rgsm": "D115test"
+                "rgsm": "21238_T_S41"
             },
-            "D115testA": {
+            "23709_N_S40": {
                 "rgcn": "na",
                 "rglb": "na",
                 "rgpl": "ILLUMINA",
                 "rgpu": "na",
-                "rgsm": "D115testA"
+                "rgsm": "23709_N_S40"
             },
-            "D115testB": {
+            "23709_T_S39": {
                 "rgcn": "na",
                 "rglb": "na",
                 "rgpl": "ILLUMINA",
                 "rgpu": "na",
-                "rgsm": "D115testB"
+                "rgsm": "23709_T_S39"
             }
         },
         "samples": {
             "na": "na"
         },
         "smparams": [],
-        "technique": "paired",
+        "technique": "",
         "units": {
-            "3435Ttest": "3435Ttest",
-            "3435TtestA": "3435TtestA",
-            "3435TtestB": "3435TtestB",
-            "D115test": "D115test",
-            "D115testA": "D115testA",
-            "D115testB": "D115testB"
+            "12284_N_S38": "12284_N_S38",
+            "12284_T_S37": "12284_T_S37",
+            "21238_N_S42": "21238_N_S42",
+            "21238_T_S41": "21238_T_S41",
+            "23709_N_S40": "23709_N_S40",
+            "23709_T_S39": "23709_T_S39"
         },
-        "username": "lackjb",
+        "username": "",
         "version": "1.0",
-        "workpath": "/data/CCBR/dev/Exome-seq-pipeline/somatic_test_June28"
+        "workpath": "/scratch/dwheeler/test"
     }
 }

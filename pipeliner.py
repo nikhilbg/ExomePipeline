@@ -1705,7 +1705,7 @@ rframe = LabelFrame(rnaseqframe,text="Pipeline",fg=textLightColor,bg=baseColor)
 rframe.pack( side = TOP,fill=X,padx=10,pady=10,expand=NO)
 
 
-rPipelines=['rnaseq','rnaseq2']
+rPipelines=['rnaseq','rnaseq2','rnaseq3']
 rPipeline = StringVar()
 rPipeline.set(rPipelines[0])
 om = OptionMenu(rframe, rPipeline, *rPipelines, command=makejson)
