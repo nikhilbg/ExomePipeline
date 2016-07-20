@@ -6,108 +6,34 @@
         "binset": "standard-bin",
         "cluster": "cluster_medium.json",
         "contrasts": {
-            "rcontrasts": [
-                "N",
-                "T"
-            ],
-            "rgroups": [
-                "N",
-                "T",
-                "N",
-                "T",
-                "N",
-                "T"
-            ],
-            "rsamps": [
-                "12284_N_S38",
-                "12284_T_S37",
-                "21238_N_S42",
-                "21238_T_S41",
-                "23709_N_S40",
-                "23709_T_S39"
-            ]
+            "rcontrasts": "na",
+            "rgroups": "na",
+            "rsamps": "na"
         },
         "custom": [],
-        "datapath": "/data/CCBR/projects/ccbr774/pipeline/fastq",
-        "description": "Enter project Description and Notes here.Enter project Description and Notes here.\n\n",
+        "datapath": "",
+        "description": "Enter project Description and Notes here.\n",
         "efiletype": "fastq",
         "filetype": "fastq.gz",
         "id": "",
         "organism": "",
         "pairs": {
-            "Sample1+Sample2": [
-                "Sample1",
-                "Sample2"
-            ],
-            "samp3+samp4": [
-                "samp3",
-                "samp4"
-            ]
+            "na": "na"
         },
         "pfamily": "exomeseq",
         "pi": "",
         "pipeline": "initialqc",
         "platform": "Illumina",
         "poc": "",
-        "rgid": {
-            "12284_N_S38": {
-                "rgcn": "na",
-                "rglb": "na",
-                "rgpl": "ILLUMINA",
-                "rgpu": "na",
-                "rgsm": "12284_N_S38"
-            },
-            "12284_T_S37": {
-                "rgcn": "na",
-                "rglb": "na",
-                "rgpl": "ILLUMINA",
-                "rgpu": "na",
-                "rgsm": "12284_T_S37"
-            },
-            "21238_N_S42": {
-                "rgcn": "na",
-                "rglb": "na",
-                "rgpl": "ILLUMINA",
-                "rgpu": "na",
-                "rgsm": "21238_N_S42"
-            },
-            "21238_T_S41": {
-                "rgcn": "na",
-                "rglb": "na",
-                "rgpl": "ILLUMINA",
-                "rgpu": "na",
-                "rgsm": "21238_T_S41"
-            },
-            "23709_N_S40": {
-                "rgcn": "na",
-                "rglb": "na",
-                "rgpl": "ILLUMINA",
-                "rgpu": "na",
-                "rgsm": "23709_N_S40"
-            },
-            "23709_T_S39": {
-                "rgcn": "na",
-                "rglb": "na",
-                "rgpl": "ILLUMINA",
-                "rgpu": "na",
-                "rgsm": "23709_T_S39"
-            }
-        },
+        "rgid": {},
         "samples": {
             "na": "na"
         },
         "smparams": [],
         "technique": "",
-        "units": {
-            "12284_N_S38": "12284_N_S38",
-            "12284_T_S37": "12284_T_S37",
-            "21238_N_S42": "21238_N_S42",
-            "21238_T_S41": "21238_T_S41",
-            "23709_N_S40": "23709_N_S40",
-            "23709_T_S39": "23709_T_S39"
-        },
+        "units": {},
         "username": "",
         "version": "1.0",
-        "workpath": "/scratch/dwheeler/test"
+        "workpath": ""
     }
 }
