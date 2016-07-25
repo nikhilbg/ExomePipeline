@@ -1,6 +1,6 @@
 rule mkdir_somatic:
         input:  expand("{s}.dedup.bam", s=samples)
-        output: mutect2="mutect2_out",
+        output: mutect2_out="mutect2_out",
                 mutect_dir="mutect_out",
                 cnvkit_dir="cnvkit_out",
                 strelka_dir="strelka_out",
