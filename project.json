@@ -1,6 +1,6 @@
 {
     "project": {
-        "analyst": "lackjb",
+        "analyst": "",
         "annotation": "hg19",
         "batchsize": "20",
         "binset": "standard-bin",
@@ -11,6 +11,17 @@
             "rsamps": "na"
         },
         "custom": [],
+<<<<<<< HEAD
+        "datapath": "",
+        "description": "Enter project Description and Notes here.\n",
+        "efiletype": "fastq",
+        "filetype": "fastq.gz",
+        "id": "",
+        "organism": "",
+        "pairs": {
+            "na": "na"
+        },
+=======
         "datapath": "/data/CCBR/projects/ccbr723/reads",
         "description": "Enter project Description and Notes here.\n",
         "efiletype": "fastq",
@@ -18,10 +29,15 @@
         "id": "test",
         "organism": "H. sapiens",
         "pairs": {},
+>>>>>>> upstream/master
         "pfamily": "exomeseq",
         "pi": "",
         "pipeline": "initialqc",
         "platform": "Illumina",
+<<<<<<< HEAD
+        "poc": "",
+        "rgid": {},
+=======
         "poc": "justin.lack",
         "rgid": {
             "F1": {
@@ -228,10 +244,18 @@
                 "rgsm": "S25"
             }
         },
+>>>>>>> upstream/master
         "samples": {
             "na": "na"
         },
         "smparams": [],
+<<<<<<< HEAD
+        "technique": "",
+        "units": {},
+        "username": "",
+        "version": "1.0",
+        "workpath": ""
+=======
         "technique": "paired",
         "units": {
             "F1": "F1",
@@ -267,5 +291,6 @@
         "username": "lackjb",
         "version": "1.0",
         "workpath": "/data/CCBR/projects/ccbr723/pipeline"
+>>>>>>> upstream/master
     }
 }
