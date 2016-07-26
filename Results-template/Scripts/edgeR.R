@@ -29,16 +29,16 @@ y = DGEList(counts=x,group=condition)
 ## method = =c("TMM","RLE","upperquartile","none")
 y <- calcNormFactors(y,method="TMM")
 # y$samples
-png("libdistrib.png")
+png("edgeR_libdistrib.png")
 barplot(y$samples$lib.size*1e-6,main="Library size distribution", names= strsplit(colnames(y$counts),".star.count.txt"), ylab="Library size (millions)",las=2,cex.names=0.8)
 dev.off()
 ## MDS plots ----------------------------------------------------------------------
 # both pairewise (leading)
-png("MDS_bcv.png")
+png("edgeR_MDS_bcv.png")
 # print(y)
 plotMDS(y, method="bcv", , main="MDS plot bcv")
 dev.off()
-png("MDS_logFC.png")
+png("edgeR_MDS_logFC.png")
 plotMDS(y, method="logFC" , main="MDS plot logFC") ## plotMDS(y) default
 dev.off()
 # plotMDS(y, method="logFC",gene.selection="common", main="MDS plot common")
@@ -46,7 +46,7 @@ dev.off()
 y <- estimateCommonDisp(y)
 y <- estimateTagwiseDisp(y) #default trend: moveingave
 ## plotting
-png("BCVplot.png")
+png("edgeR_BCVplot.png")
 plotBCV(y,main="BCV plot")
 dev.off()
 ## differentially expressed genes ---------------------------------------------------
@@ -65,11 +65,11 @@ res1 = as.data.frame(tt)
 ##final=final[order(final$FDR),]
 final=res1[order(res1$FDR),]
 final$FC <- ifelse(final$logFC<0, -1/(2^final$logFC), 2^final$logFC)
-write.table(final,file=paste("DEG_EdgeR_",contras[i],"_vs_",contras[i+1],".txt",sep=""),sep="\t",col.names=NA)
+write.table(final,file=paste("edgeR_DEG_",contras[i],"_vs_",contras[i+1],".txt",sep=""),sep="\t",col.names=NA)
 #  like MAplot
 deg1sel <- decideTestsDGE(deg, p=0.05, adjust="BH")
 detags <- rownames(y)[as.logical(deg1sel)]
-png(paste("Smearplot_",contras[i],"_vs_",contras[i+1],".png",sep=""))
+png(paste("edgeR_Smearplot_",contras[i],"_vs_",contras[i+1],".png",sep=""))
 plotSmear(deg, de.tags=detags,main= paste("Smearplot FDR<0.05 ",contras[i],"_vs_",contras[i+1],sep=""))
 abline(h = c(-2, 2), col = "blue")
 dev.off()
@@ -81,7 +81,7 @@ ndata= cpm(y,log=FALSE,normalized.lib.sizes=TRUE)*1e6
 ## save it
 write.table(ylog2,file="edgeR_normalized_counts_log.txt",sep="\t",col.names=NA) 
 write.table(ndata,file="edgeR_normalized_counts.txt",sep="\t",col.names=NA)
-png("HistEdgeRnormFilter.png")
+png("edgeR_HistEdgeRnormFilter.png")
 df.m <- melt(as.data.frame(ndata))
 print(ggplot(df.m) + geom_density(aes(x = value, colour = variable)) + labs(x = NULL) + theme(legend.position='top') + scale_x_log10())
 dev.off()         
